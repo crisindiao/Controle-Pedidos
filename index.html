@@ -451,7 +451,7 @@ function renderDashboard(){
   const pendentes = pedidosCache.filter(p=>(p.status||'Pendente')==='Pendente').length;
   const hojeStr = new Date().toISOString().slice(0,10);
   const hoje = pedidosCache.filter(p=>p.dataPedido===hojeStr).length;
-  const faturamento = pedidosCache.reduce((s,p)=>s + (parseFloat(p.valorTotal)||0), 0);
+  const faturamento = pedidosCache.reduce((s,p)=> (p.status||'Pendente')==='Cancelado' ? s : s + (parseFloat(p.valorTotal)||0), 0);
 
   document.getElementById('dashTotalPedidos').textContent = total;
   document.getElementById('dashPendentes').textContent = pendentes;
