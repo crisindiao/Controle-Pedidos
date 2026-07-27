@@ -54,6 +54,12 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
 .dash-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:16px}
 .dash-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--rose)}
 .dash-label{font-size:11px;color:var(--soft);margin-top:2px}
+.pedidos-resumo{display:flex;align-items:center;justify-content:center;gap:14px;background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:14px 10px;margin-bottom:14px}
+.pr-item{flex:1;text-align:center}
+.pr-num{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--rose)}
+.pr-item:last-child .pr-num{color:var(--teal)}
+.pr-label{font-size:11px;color:var(--soft);margin-top:2px}
+.pr-vs{font-size:11px;color:var(--soft);font-weight:600;opacity:.6}
 .dash-card.wide{grid-column:1/-1}
 
 /* ===== FILTROS ===== */
@@ -180,7 +186,7 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
       </div>
       <div class="dash-card wide">
         <div class="dash-num" id="dashLucro">--</div>
-        <div class="dash-label">Lucro total (R$) · pedidos Entregue/Enviado com custos cadastrados</div>
+        <div class="dash-label">Lucro total (R$) · pedidos Entregue/A caminho com custos cadastrados</div>
       </div>
       <div class="dash-card wide">
         <div class="sheet-label" style="margin-bottom:10px">Pedidos por status</div>
@@ -197,10 +203,21 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
         <option value="">Todos os status</option>
         <option value="Pendente">Pendente</option>
         <option value="Em_producao">Em produção</option>
-        <option value="Enviado">Enviado</option>
+        <option value="Enviado">A caminho</option>
         <option value="Entregue">Entregue</option>
         <option value="Cancelado">Cancelado</option>
       </select>
+    </div>
+    <div class="pedidos-resumo" id="pedidosResumo">
+      <div class="pr-item">
+        <div class="pr-num" id="prCusto">R$ 0,00</div>
+        <div class="pr-label">Custo total</div>
+      </div>
+      <div class="pr-vs">vs</div>
+      <div class="pr-item">
+        <div class="pr-num" id="prLucro">R$ 0,00</div>
+        <div class="pr-label">Lucro total</div>
+      </div>
     </div>
     <div class="pedido-list" id="pedidoList">
       <div class="empty-state"><div class="ic">⏳</div>Carregando pedidos...</div>
@@ -264,7 +281,7 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
       <select class="status-select" id="detStatusSelect">
         <option value="Pendente">Pendente</option>
         <option value="Em_producao">Em produção</option>
-        <option value="Enviado">Enviado</option>
+        <option value="Enviado">A caminho</option>
         <option value="Entregue">Entregue</option>
         <option value="Cancelado">Cancelado</option>
       </select>
@@ -289,6 +306,10 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
     <div class="sheet-section" id="detObsWrap">
       <div class="sheet-label">Observações</div>
       <div id="detObs" style="font-size:13px;color:var(--soft)"></div>
+    </div>
+
+    <div class="sheet-section">
+      <button id="btnExcluirPedido" style="width:100%;padding:12px;border:1.5px solid var(--danger);border-radius:10px;background:var(--danger-p);color:var(--danger);font-weight:700;font-size:13px;cursor:pointer">🗑️ Excluir pedido</button>
     </div>
   </div>
 </div>
@@ -420,7 +441,7 @@ function fmtMoeda(v){
 }
 
 function statusLabel(s){
-  const map = {Pendente:'Pendente', Em_producao:'Em produção', Enviado:'Enviado', Entregue:'Entregue', Cancelado:'Cancelado'};
+  const map = {Pendente:'Pendente', Em_producao:'Em produção', Enviado:'A caminho', Entregue:'Entregue', Cancelado:'Cancelado'};
   return map[s] || s || 'Pendente';
 }
 
@@ -494,6 +515,13 @@ function renderPedidos(){
   });
 
   const listEl = document.getElementById('pedidoList');
+
+  const paraTotais = lista.filter(p=>(p.status||'Pendente') !== 'Cancelado');
+  const custoTotalLista = paraTotais.reduce((s,p)=>s + calcCustoItens(p) + (parseFloat(p.custoExtra)||0), 0);
+  const lucroTotalLista = paraTotais.reduce((s,p)=>s + calcLucro(p), 0);
+  document.getElementById('prCusto').textContent = fmtMoeda(custoTotalLista);
+  document.getElementById('prLucro').textContent = fmtMoeda(lucroTotalLista);
+
   if(lista.length === 0){
     listEl.innerHTML = '<div class="empty-state"><div class="ic">📭</div>Nenhum pedido encontrado.</div>';
     return;
@@ -581,6 +609,22 @@ document.getElementById('btnFecharDetalhe').addEventListener('click', ()=>{
 });
 detalheOverlay.addEventListener('click', (e)=>{
   if(e.target === detalheOverlay){ detalheOverlay.classList.remove('show'); pedidoAbertoId = null; }
+});
+
+document.getElementById('btnExcluirPedido').addEventListener('click', async ()=>{
+  if(!pedidoAbertoId) return;
+  const p = pedidosCache.find(x=>x.id===pedidoAbertoId);
+  const codigo = p ? p.codigo : pedidoAbertoId;
+  if(!confirm(`Excluir o pedido ${codigo}? Essa ação não pode ser desfeita.`)) return;
+  try{
+    await deleteDoc(doc(db, "imaginae", "dados", "pedidos", pedidoAbertoId));
+    toast('Pedido excluído ✓');
+    detalheOverlay.classList.remove('show');
+    pedidoAbertoId = null;
+  }catch(err){
+    console.error(err);
+    toast('Erro ao excluir pedido');
+  }
 });
 
 document.getElementById('detStatusSelect').addEventListener('change', async (e)=>{
