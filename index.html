@@ -3,27 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="Bottons, marca-páginas, lembrancinhas e papelaria criativa personalizada. Normal, laminado ou holográfico. Pedidos via WhatsApp ou Shopee. Entrega em 2 a 5 dias úteis.">
-<meta name="theme-color" content="#C4736A">
-<link rel="apple-touch-icon" href="https://res.cloudinary.com/jrmiaduy/image/upload/v1785117441/gclzj4bbnflaxvhcimta.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="IMAGINAE">
-<meta name="mobile-web-app-capable" content="yes">
-<meta property="og:title" content="Imaginae Papelaria Criativa — Bottons, Marca-Páginas e Lembrancinhas">
-<meta property="og:description" content="Bottons, marca-páginas, lembrancinhas e muito mais! Normal, laminado ou holográfico. Peça pelo WhatsApp ou Shopee 🛍️">
-<link rel="canonical" href="https://imaginae-papelaria-criativa.vercel.app">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://imaginae-papelaria-criativa.vercel.app">
-<meta property="og:image" content="https://imaginae-papelaria-criativa.vercel.app/og-image.png">
-<meta property="og:image:width" content="1080">
-<meta property="og:image:height" content="1080">
-<meta property="og:image:alt" content="Imaginae Papelaria Criativa — Você imagina e a gente cria">
-<meta property="og:site_name" content="Imaginae Papelaria Criativa">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Imaginae Papelaria Criativa — Bottons, Marca-Páginas e Lembrancinhas">
-<meta name="twitter:description" content="Bottons, marca-páginas, lembrancinhas e muito mais! Peça pelo WhatsApp ou Shopee 🛍️">
-<title>Imaginae Papelaria Criativa — Bottons, Marca-Páginas e Lembrancinhas Personalizados</title>
+<title>Painel de Pedidos — Imaginae</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -32,2249 +12,562 @@
   --teal:#2A7D7B;--teal-l:#4AADAB;--teal-p:#EAF6F6;
   --gold:#C9971C;--gold-l:#F5C842;
   --cream:#FDF0EE;--text:#2D2D2D;--soft:#6B6B6B;--border:#E8DDD8;
+  --danger:#C0392B;--danger-p:#FBEAE8;
+  --ok:#2A7D2A;--ok-p:#E8F5E8;
+  --warn:#B8860B;--warn-p:#FFF6E0;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:radial-gradient(ellipse at 60% 40%, #fce8e8 0%, #fde0e0 30%, #f9d4d4 70%, #f5cece 100%) fixed;color:var(--text);overflow-x:hidden}
+body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-height:100vh}
+.hidden{display:none!important}
 
-.hdr{position:sticky;top:0;z-index:200;background:rgba(255,250,247,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.hdr-top{padding:10px 16px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:10px;cursor:pointer}
-.brand-logo{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--rose-l)}
-.brand-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--rose);line-height:1.1}
-.brand-sub{font-size:10px;color:var(--teal)}
-.cart-btn{padding:8px 14px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;border:none;background:var(--gold-l);color:#6b3f00;white-space:nowrap}
-.hdr-nav{display:flex;align-items:center;border-top:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.hdr-nav::-webkit-scrollbar{display:none}
-.nav-btn{flex:1;min-width:80px;padding:11px 8px;font-size:12px;font-weight:600;cursor:pointer;border:none;color:var(--soft);background:transparent;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:3px}
-.nav-btn .nav-icon{font-size:14px}
-.nav-btn:hover{color:var(--rose);background:var(--rose-p)}
-.nav-btn.act{color:var(--rose);border-bottom:3px solid var(--rose);background:var(--rose-p)}
+/* ===== LOGIN ===== */
+#loginScreen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(160deg,var(--rose-p) 0%,var(--cream) 50%,var(--teal-p) 100%)}
+.login-card{background:#fff;border-radius:20px;padding:36px 28px;max-width:380px;width:100%;box-shadow:0 8px 40px rgba(196,115,106,.18);text-align:center}
+.login-logo{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--rose);margin-bottom:2px}
+.login-sub{font-size:12px;color:var(--teal);font-weight:600;letter-spacing:1px;margin-bottom:24px}
+.login-card input{width:100%;padding:13px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;margin-bottom:12px;outline:none;font-family:inherit}
+.login-card input:focus{border-color:var(--rose)}
+.login-btn{width:100%;padding:13px;border:none;border-radius:10px;background:var(--rose);color:#fff;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px}
+.login-btn:disabled{opacity:.6;cursor:not-allowed}
+.login-error{background:var(--danger-p);color:var(--danger);font-size:12px;padding:9px 12px;border-radius:8px;margin-bottom:12px;text-align:left;display:none}
 
-.cbar{background:linear-gradient(135deg,var(--rose),var(--rose-l));padding:10px 14px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:#fff;font-weight:500}
-.cnum{font-family:'Playfair Display',serif;font-size:17px;font-weight:700}
-.cpulse{width:8px;height:8px;border-radius:50%;background:#fff;flex-shrink:0;opacity:0.9}
-.cbar-icon{font-size:16px}
+/* ===== APP SHELL ===== */
+#app{min-height:100vh;display:none}
+#app.show{display:block}
+.hdr{position:sticky;top:0;z-index:200;background:rgba(255,250,247,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.hdr-brand{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--rose)}
+.hdr-brand span{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:var(--teal);letter-spacing:.5px}
+.hdr-right{display:flex;align-items:center;gap:10px}
+.hdr-email{font-size:11px;color:var(--soft);max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-logout{background:none;border:1.5px solid var(--border);border-radius:20px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--soft);cursor:pointer}
 
-.pg{display:none;padding-bottom:60px;padding-top:0}
-.pg.act{display:block}
-.s-hero{background:linear-gradient(135deg,var(--rose-p),#fff);padding:32px 16px 22px;text-align:center;border-bottom:1px solid var(--border)}
-.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--rose);font-weight:600;margin-bottom:8px}
-.s-title{font-family:'Playfair Display',serif;font-size:clamp(22px,5vw,36px);font-weight:700;margin-bottom:8px}
-.s-body{font-size:14px;color:var(--soft);max-width:500px;margin:0 auto;line-height:1.7}
+.tabs{display:flex;gap:6px;padding:10px 14px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:#fff;border-bottom:1px solid var(--border)}
+.tabs::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid var(--border);color:var(--soft);background:#fff;white-space:nowrap}
+.tab-btn.act{background:var(--rose);color:#fff;border-color:var(--rose)}
 
-.hero{min-height:82vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 16px 32px;background:linear-gradient(160deg,var(--rose-p) 0%,var(--cream) 50%,var(--teal-p) 100%)}
-.h-logo{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--rose-l);box-shadow:0 6px 26px rgba(196,115,106,.25);margin-bottom:14px;animation:popIn .8s ease both}
-.h-name{font-family:'Playfair Display',serif;font-size:clamp(26px,7vw,52px);font-weight:900;color:var(--rose);animation:fadeUp .8s .1s ease both}
-.h-sub{font-size:clamp(12px,3vw,16px);color:var(--teal);font-weight:600;letter-spacing:1px;margin-bottom:5px;animation:fadeUp .8s .2s ease both}
-.h-tag{font-size:clamp(13px,3vw,17px);color:var(--soft);font-style:italic;margin-bottom:22px;animation:fadeUp .8s .3s ease both}
-.h-badges{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:22px;animation:fadeUp .8s .4s ease both}
-.hbadge{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:5px 12px;font-size:11px;color:var(--soft)}
-.h-shortcuts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%;max-width:340px;animation:fadeUp .8s .5s ease both}
-.shortcut{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;transition:all .2s;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-.shortcut:hover{border-color:var(--rose);background:var(--rose-p);transform:translateY(-3px);box-shadow:0 6px 18px rgba(196,115,106,.2)}
-.sc-icon{font-size:28px}
-.sc-label{font-size:13px;font-weight:700;color:var(--text)}
+.view{display:none;padding:16px;max-width:1000px;margin:0 auto}
+.view.act{display:block}
 
-.stabs{display:flex;gap:8px;padding:14px 14px 0;flex-wrap:wrap;max-width:900px;margin:0 auto}
-.stab{padding:9px 15px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid var(--border);color:var(--soft);background:#fff;transition:all .2s}
-.stab:hover{border-color:var(--rose);color:var(--rose)}
-.stab.act{background:var(--rose);color:#fff;border-color:var(--rose)}
-.scon{display:none;padding:16px 14px;max-width:900px;margin:0 auto}
-.scon.act{display:block}
+/* ===== DASHBOARD ===== */
+.dash-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:18px}
+.dash-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:16px}
+.dash-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--rose)}
+.dash-label{font-size:11px;color:var(--soft);margin-top:2px}
+.dash-card.wide{grid-column:1/-1}
 
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px}
-.pcard{background:rgba(255,255,255,0.88);backdrop-filter:blur(4px);border:1.5px solid rgba(232,168,158,0.35);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .25s;box-shadow:0 2px 10px rgba(196,115,106,.12)}
-.pcard:hover{transform:translateY(-4px);border-color:var(--rose-l);box-shadow:0 8px 22px rgba(196,115,106,.22);background:rgba(255,255,255,0.96)}
-.pimg{aspect-ratio:1/1;overflow:hidden;background:#f5f0ee}.pimg img{width:100%;height:100%;object-fit:cover;display:block}
-.pimg img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-.pcard:hover .pimg img{transform:scale(1.06)}
-.pinfo{padding:6px 8px}
-.pname{font-size:11px;font-weight:700;margin-bottom:2px}
-.ptag{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--rose);font-weight:500}
-.soon-c{opacity:.6;cursor:default}
-.soon-c:hover{transform:none;box-shadow:0 2px 8px rgba(0,0,0,.05)}
-.soon-img{aspect-ratio:1/1;background:linear-gradient(135deg,#f5f0ee,#ede6e3);display:flex;align-items:center;justify-content:center;font-size:28px}
+/* ===== FILTROS ===== */
+.filters{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
+.filters input[type=search]{flex:1;min-width:160px;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;outline:none;font-family:inherit}
+.filters select{padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:inherit;color:var(--text);background:#fff}
 
-.cs{text-align:center;padding:44px 16px;background:linear-gradient(135deg,var(--rose-p),var(--teal-p));border-radius:16px;margin:14px 0}
-.cs-i{font-size:42px;margin-bottom:12px}
-.cs h3{font-family:'Playfair Display',serif;font-size:21px;margin-bottom:7px}
-.cs p{color:var(--soft);font-size:14px}
+/* ===== PEDIDO CARD ===== */
+.pedido-list{display:flex;flex-direction:column;gap:10px}
+.pedido-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:14px;cursor:pointer;transition:all .15s}
+.pedido-card:hover{border-color:var(--rose-l);box-shadow:0 4px 14px rgba(196,115,106,.1)}
+.ped-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px}
+.ped-codigo{font-family:'Playfair Display',serif;font-weight:700;font-size:15px;color:var(--text)}
+.ped-cliente{font-size:13px;color:var(--soft);margin-top:2px}
+.ped-valor{font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:var(--rose);white-space:nowrap}
+.ped-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.status-badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap}
+.status-Pendente{background:var(--warn-p);color:var(--warn)}
+.status-Em_producao{background:#E5EEFB;color:#2C5FAD}
+.status-Enviado{background:#EFE5FB;color:#6B3FAD}
+.status-Entregue{background:var(--ok-p);color:var(--ok)}
+.status-Cancelado{background:var(--danger-p);color:var(--danger)}
+.ped-data{font-size:11px;color:#aaa}
+.empty-state{text-align:center;padding:50px 20px;color:var(--soft)}
+.empty-state .ic{font-size:38px;margin-bottom:10px}
 
-.cfab{position:fixed;bottom:22px;right:18px;z-index:1000;background:var(--rose);color:#fff;border:none;border-radius:50%;width:56px;height:56px;font-size:26px;cursor:pointer;box-shadow:0 4px 18px rgba(196,115,106,.5);display:none;align-items:center;justify-content:center;transition:transform .2s;line-height:1}
-.cfab.vis{display:flex}
-.cfab:active{transform:scale(.92)}
-.cfab-badge{position:absolute;top:-4px;right:-4px;background:#e63946;color:#fff;border-radius:50%;min-width:20px;height:20px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff;padding:0 3px;pointer-events:none}
-.wa-float{position:fixed;bottom:18px;left:14px;z-index:300;background:#25D366;color:#fff;border:none;border-radius:50px;padding:10px 16px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 18px rgba(37,211,102,.4);display:flex;align-items:center;gap:7px;text-decoration:none}
-.wa-float:hover{background:#1ebe5d}
+/* ===== MODAL DETALHE ===== */
+.overlay{position:fixed;inset:0;background:rgba(61,44,46,.5);z-index:900;display:none;align-items:flex-end;justify-content:center}
+.overlay.show{display:flex}
+.sheet{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:480px;max-height:88vh;overflow-y:auto;padding:22px}
+@media(min-width:640px){.overlay{align-items:center}.sheet{border-radius:20px;max-height:80vh}}
+.sheet-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.sheet-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:700}
+.sheet-close{background:var(--rose-p);border:none;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;color:var(--rose);flex-shrink:0}
+.sheet-section{margin-bottom:16px}
+.sheet-label{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--soft);font-weight:700;margin-bottom:6px}
+.item-row{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+.item-row:last-child{border-bottom:none}
+.item-name{font-weight:600}
+.item-det{color:var(--soft);font-size:12px}
+.status-select{width:100%;padding:11px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;margin-top:4px}
+.contato-link{display:inline-flex;align-items:center;gap:6px;color:var(--ok);font-weight:600;font-size:13px;text-decoration:none;margin-top:6px}
+.total-row{display:flex;justify-content:space-between;font-family:'Playfair Display',serif;font-size:18px;font-weight:700;padding-top:10px;margin-top:6px;border-top:2px solid var(--border)}
 
-.co{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:800;display:none}
-.co.open{display:block}
-.cdraw{position:fixed;right:0;top:0;bottom:0;width:min(400px,100vw);background:#fff;z-index:900;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s;box-shadow:-4px 0 28px rgba(0,0,0,.15)}
-.cdraw.open{transform:translateX(0)}
-.cdraw-hdr{padding:16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.cdraw-hdr h3{font-family:'Playfair Display',serif;font-size:18px}
-.cx{background:none;border:none;font-size:24px;cursor:pointer;color:var(--soft)}
-.cbody{flex:1;overflow-y:auto;padding:12px 14px}
-.cempty{text-align:center;padding:32px 14px;color:var(--soft);font-size:14px}
-.ci{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
-.ci-img{width:42px;height:42px;border-radius:8px;flex-shrink:0;background:#f5f0ee;display:flex;align-items:center;justify-content:center;font-size:17px;overflow:hidden;border:1px solid var(--border)}
-.ci-img img{width:100%;height:100%;object-fit:cover}
-.ci-info{flex:1;min-width:0}
-.ci-name{font-size:12px;font-weight:600}
-.ci-det{font-size:11px;color:var(--soft);margin-top:2px;line-height:1.4}
-.ci-price{font-size:14px;font-weight:700;color:var(--rose);flex-shrink:0}
-.ci-rm{background:none;border:none;color:#ccc;font-size:20px;cursor:pointer;padding:0 3px}
-.ci-rm:hover{color:#e55}
-.cfooter{padding:13px 14px;border-top:1px solid var(--border)}
-.ctrow{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.ctlbl{font-size:12px;color:var(--soft);text-transform:uppercase;letter-spacing:1px}
-.ctval{font-family:'Playfair Display',serif;font-size:22px;color:var(--rose);font-weight:700}
-.btn-wa{width:100%;padding:13px;background:#25D366;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:7px}
-.btn-wa:hover{background:#1ebe5d}
-.btn-clr{width:100%;padding:8px;background:transparent;color:#aaa;border:1px solid var(--border);border-radius:8px;font-size:12px;cursor:pointer}
+/* ===== EQUIPE ===== */
+.admin-list{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.admin-item{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px}
+.admin-remove{background:none;border:none;color:var(--danger);font-size:12px;font-weight:600;cursor:pointer}
+.add-admin-form{display:flex;gap:8px;margin-top:16px}
+.add-admin-form input{flex:1;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:inherit}
+.add-admin-form button{padding:11px 16px;border:none;border-radius:10px;background:var(--teal);color:#fff;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap}
+.hint-box{background:var(--teal-p);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--teal);line-height:1.5;margin-top:14px}
 
-.aform{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:18px;margin-top:18px;box-shadow:0 4px 20px rgba(196,115,106,.1)}
-.aform h3{font-family:'Playfair Display',serif;font-size:17px;margin-bottom:14px}
-.fr{margin-bottom:11px}
-.fr label{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--soft);font-weight:600;margin-bottom:5px}
-.fr select,.fr input,.fr textarea{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text);background:var(--cream);outline:none;transition:border-color .2s;-webkit-appearance:none}
-.fr select:focus,.fr input:focus,.fr textarea:focus{border-color:var(--rose)}
-.fr textarea{resize:vertical;min-height:76px}
-.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pprev{background:var(--rose-p);border:1.5px solid var(--rose-l);border-radius:8px;padding:10px 13px;display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}
-.pprev span{font-size:12px;color:var(--soft)}
-.pprev strong{font-size:19px;color:var(--rose);font-family:'Playfair Display',serif;font-weight:700}
-.btn-add{width:100%;padding:12px;background:var(--rose);color:#fff;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s}
-.btn-add:hover{background:var(--rose-l)}
-.uarea{border:2px dashed var(--border);border-radius:10px;padding:18px;text-align:center;cursor:pointer;transition:all .2s;background:var(--cream)}
-.uarea:hover{border-color:var(--rose);background:var(--rose-p)}
-.uarea input{display:none}
-.uprev{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
-.uthumb{width:52px;height:52px;border-radius:8px;object-fit:cover;border:2px solid var(--rose-l)}
-
-.deps{background:linear-gradient(135deg,var(--teal-p),var(--cream));padding:40px 14px}
-.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;max-width:900px;margin:20px auto 0}
-.dcard{background:rgba(255,255,255,0.88);border-radius:14px;padding:16px;box-shadow:0 2px 10px rgba(196,115,106,.1);border:1px solid rgba(232,168,158,0.35)}
-.dstars{color:var(--gold-l);font-size:15px;margin-bottom:7px}
-.dtext{font-size:13px;line-height:1.6;font-style:italic;margin-bottom:11px}
-.dautor{display:flex;align-items:center;gap:8px}
-.dav{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--rose-p),var(--teal-p));display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:2px solid var(--border)}
-.dname{font-size:13px;font-weight:700}
-.dloc{font-size:11px;color:var(--soft)}
-.dprod{display:inline-block;margin-top:7px;background:var(--rose-p);color:var(--rose);font-size:10px;padding:3px 9px;border-radius:10px;font-weight:600}
-
-.faq{padding:40px 14px;max-width:700px;margin:0 auto}
-.fitem{background:#fff;border:1.5px solid var(--border);border-radius:12px;margin-bottom:7px;overflow:hidden}
-.fq{padding:14px 16px;font-weight:600;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
-.fq:hover{background:var(--rose-p)}
-.farrow{font-size:18px;color:var(--rose);transition:transform .3s}
-.fq.open .farrow{transform:rotate(45deg)}
-.fa{padding:0 16px;font-size:13px;color:var(--soft);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s}
-.fa.open{max-height:200px;padding:0 16px 13px}
-
-.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--rose);color:#fff;padding:10px 20px;border-radius:30px;font-size:13px;font-weight:600;z-index:999;transition:transform .3s;pointer-events:none;white-space:nowrap;box-shadow:0 4px 14px rgba(196,115,106,.4)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);background:#2D2D2D;color:#fff;padding:12px 20px;border-radius:30px;font-size:13px;font-weight:600;z-index:999;transition:transform .3s}
 .toast.show{transform:translateX(-50%) translateY(0)}
-
-.foot{background:var(--text);color:#fff;padding:28px 16px 18px;text-align:center}
-.flogo-wrap{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px}
-.flogo{width:44px;height:44px;border-radius:50%;border:2px solid var(--rose-l)}
-.fbrand{font-family:'Playfair Display',serif;font-size:15px;color:var(--rose-l)}
-.socrow{display:flex;gap:12px;justify-content:center;margin-bottom:12px;flex-wrap:wrap}
-.socl{display:flex;align-items:center;gap:6px;text-decoration:none;color:#aaa;font-size:13px;transition:color .2s}
-.socl:hover{color:var(--rose-l)}
-.soci{width:27px;height:27px;border-radius:6px;display:flex;align-items:center;justify-content:center}
-.soci svg{width:14px;height:14px}
-.ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
-.tt{background:#010101;border:1px solid #333}
-.yt{background:red}
-.sp{background:#ee4d2d}
-.fcopy{font-size:11px;color:#555;letter-spacing:1px}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes popIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
-
-/* ===== MODAL PRODUTO ===== */
-.pd-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.45);z-index:600;display:none;align-items:flex-end;justify-content:center;-webkit-overflow-scrolling:touch}
-.pd-overlay.open{display:-webkit-flex;display:flex}
-.pd-modal{background:#fff;width:100%;max-width:480px;border-radius:22px 22px 0 0;padding:0 0 24px;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch;animation:slideUp .3s ease}
-@keyframes slideUp{from{-webkit-transform:translateY(100%);transform:translateY(100%)}to{-webkit-transform:translateY(0);transform:translateY(0)}}
-.pd-img-wrap{position:relative;width:100%;padding-top:100%;background:#f5f0ee;-webkit-flex-shrink:0;flex-shrink:0}
-.pd-img-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;-o-object-fit:cover;border-radius:22px 22px 0 0}
-.pd-qty-badge{position:absolute;bottom:14px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:rgba(255,255,255,.95);border-radius:50px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;gap:0;box-shadow:0 4px 20px rgba(0,0,0,.18);overflow:hidden}
-.pd-qty-btn{width:48px;height:48px;border:none;background:transparent;font-size:24px;font-weight:700;cursor:pointer;color:var(--rose);display:flex;align-items:center;justify-content:center;transition:background .15s}
-.pd-qty-btn:active{background:var(--rose-p)}
-.pd-qty-val{min-width:44px;text-align:center;font-size:20px;font-weight:700;color:var(--text);font-family:'Playfair Display',serif}
-.pd-body{padding:18px 18px 0}
-.pd-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:4px}
-.pd-tag{font-size:11px;color:var(--rose);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:16px}
-.pd-close-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 0}
-.pd-close-bar span{font-size:13px;color:var(--soft);font-weight:500}
-.pd-close{background:var(--rose-p);border:none;border-radius:50%;width:32px;height:32px;font-size:18px;cursor:pointer;color:var(--rose);display:flex;align-items:center;justify-content:center}
-.pd-vars{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.pd-add{width:100%;padding:14px;background:var(--rose);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;transition:background .2s;margin-top:6px}
-.pd-add:hover{background:var(--rose-l)}
-.pd-price-row{display:flex;justify-content:space-between;align-items:center;background:var(--rose-p);border-radius:8px;padding:10px 14px;margin-bottom:14px}
-.pd-price-lbl{font-size:12px;color:var(--soft)}
-.pd-price-val{font-family:'Playfair Display',serif;font-size:22px;color:var(--rose);font-weight:700}
-
-
-/* Seção Quem Faz */
-.quem-faz{background:linear-gradient(135deg,var(--rose-p),var(--teal-p));padding:44px 16px;border-radius:16px;margin:14px 0}
-.quem-faz-inner{max-width:700px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:24px}
-.quem-faz-foto{width:140px;height:140px;border-radius:50%;object-fit:cover;object-position:top center;border:4px solid var(--rose-l);box-shadow:0 6px 26px rgba(196,115,106,.30)}
-.quem-faz-info{text-align:center}
-.quem-faz-nome{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--rose);margin-bottom:4px}
-.quem-faz-cargo{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--teal);font-weight:600;margin-bottom:12px}
-.quem-faz-bio{font-size:14px;color:var(--soft);line-height:1.7;max-width:480px}
-
-/* Depoimentos com foto */
-.dav-img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:top center;flex-shrink:0;border:2px solid var(--border)}
-.dav-initials{width:34px;height:34px;border-radius:50%;flex-shrink:0;border:2px solid var(--border);background:linear-gradient(135deg,var(--teal),var(--teal-l));color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:13px}
-
-
-/* Marca-Páginas */
-.mp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;padding:16px 14px;max-width:900px;margin:0 auto}
-.mp-card{background:rgba(255,255,255,0.88);backdrop-filter:blur(4px);border:1.5px solid rgba(232,168,158,0.35);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .25s;box-shadow:0 2px 10px rgba(196,115,106,.12)}
-.mp-card:hover{transform:translateY(-4px);border-color:var(--rose-l);box-shadow:0 8px 22px rgba(196,115,106,.22)}
-.mp-img{aspect-ratio:2/5;overflow:hidden;background:#f5f0ee;position:relative}
-.mp-img img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .3s}
-.mp-card:hover .mp-img img{transform:scale(1.04)}
-.mp-info{padding:10px 12px 12px}
-.mp-name{font-size:12px;font-weight:700;margin-bottom:4px;line-height:1.3;color:var(--text)}
-.mp-desc{font-size:10px;color:var(--soft);margin-bottom:8px;line-height:1.4}
-.mp-prices{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:0}
-.mp-price-tag{font-size:10px;background:var(--rose-p);color:var(--rose);border-radius:8px;padding:2px 7px;font-weight:600}
-
-/* Form marca-páginas */
-.mp-form{background:rgba(255,255,255,0.88);border:1.5px solid rgba(232,168,158,0.35);border-radius:14px;padding:18px;margin:0 14px 20px;box-shadow:0 4px 20px rgba(196,115,106,.1);max-width:870px;margin-left:auto;margin-right:auto}
-.mp-form h3{font-family:'Playfair Display',serif;font-size:17px;margin-bottom:14px}
-.mp-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:600;display:none;align-items:flex-end;justify-content:center}
-.mp-modal-overlay.open{display:flex}
-.mp-modal{background:#fff;width:100%;max-width:480px;border-radius:22px 22px 0 0;padding:0 0 24px;display:flex;flex-direction:column;max-height:92vh;overflow-y:auto;animation:slideUp .3s ease}
-.mp-modal-img{width:100%;height:200px;object-fit:cover;object-position:top center;border-radius:22px 22px 0 0}
-.mp-modal-body{padding:18px 18px 0}
-.mp-modal-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:4px}
-.mp-modal-tag{font-size:11px;color:var(--rose);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:16px}
-.mp-close-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 0}
-.mp-close-bar span{font-size:13px;color:var(--soft);font-weight:500}
-.mp-close{background:var(--rose-p);border:none;border-radius:50%;width:32px;height:32px;font-size:18px;cursor:pointer;color:var(--rose);display:flex;align-items:center;justify-content:center}
-.mp-price-row{display:flex;justify-content:space-between;align-items:center;background:var(--rose-p);border-radius:8px;padding:10px 14px;margin:14px 0}
-.mp-price-lbl{font-size:12px;color:var(--soft)}
-.mp-price-val{font-family:'Playfair Display',serif;font-size:22px;color:var(--rose);font-weight:700}
-.mp-add{width:100%;padding:14px;background:var(--rose);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;transition:background .2s;margin-top:6px}
-.mp-add:hover{background:var(--rose-l)}
-
-
-/* Faixa dupla com animação */
-.cbar-wrap{display:flex;flex-direction:column}
-.cbar2{background:linear-gradient(135deg,#ee4d2d,#ff6b35);padding:9px 14px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:#fff;font-weight:600;text-decoration:none;cursor:pointer;transition:opacity .2s}
-.cbar2:hover{opacity:0.9;text-decoration:none;color:#fff}
-.cbar2-badge{background:rgba(255,255,255,0.25);border-radius:10px;padding:2px 8px;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,0.4)}
-
-
-
-
-
-/* Botão voltar */
-.back-btn{display:inline-flex;align-items:center;gap:8px;background:var(--rose);color:#fff;border:none;border-radius:50px;font-weight:700;font-size:13px;cursor:pointer;padding:10px 18px;margin:14px 16px 0;box-shadow:0 3px 12px rgba(196,115,106,.35);transition:all .2s}
-.back-btn:hover{background:var(--rose-l);transform:translateY(-1px);box-shadow:0 5px 16px rgba(196,115,106,.4)}
-
-
-.live-widget{display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(255,255,255,0.7);backdrop-filter:blur(6px);border:1px solid rgba(232,168,158,0.4);border-radius:50px;padding:8px 18px;margin:14px auto 0;max-width:260px;box-shadow:0 2px 12px rgba(196,115,106,.12)}
-.live-dot{width:8px;height:8px;border-radius:50%;background:#e63946;flex-shrink:0;animation:livePulse 1.8s ease-in-out infinite}
-@keyframes livePulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(230,57,70,.4)}50%{opacity:.7;box-shadow:0 0 0 6px rgba(230,57,70,0)}}
-.live-text{font-size:12px;color:var(--soft);font-weight:500}
-.live-num{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--rose)}
-
-/* Espelhinhos */
-.esp-section{padding:0 14px 20px;max-width:900px;margin:0 auto}
-.esp-section-title{font-family:"Playfair Display",serif;font-size:15px;font-weight:700;color:var(--rose);margin:20px 0 10px;display:flex;align-items:center;gap:8px}
-.esp-section-title::after{content:"";flex:1;height:1px;background:rgba(196,115,106,.2)}
-.esp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:8px}
-.esp-card{background:rgba(255,255,255,0.88);backdrop-filter:blur(4px);border:1.5px solid rgba(232,168,158,0.35);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .25s;box-shadow:0 2px 10px rgba(196,115,106,.12)}
-.esp-card:hover{transform:translateY(-4px);border-color:var(--rose-l);box-shadow:0 8px 22px rgba(196,115,106,.22)}
-.esp-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
-.esp-card-info{padding:8px 10px}
-.esp-card-name{font-size:11px;font-weight:700;color:var(--text);margin-bottom:3px}
-.esp-card-price{font-size:10px;color:var(--rose);font-weight:600}
-
-
-/* Barra de categorias */
-.cat-bar{display:flex;gap:8px;padding:12px 14px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.cat-bar::-webkit-scrollbar{display:none}
-.cat-btn{flex-shrink:0;padding:8px 14px;border-radius:50px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;color:var(--soft);cursor:pointer;transition:all .2s;white-space:nowrap}
-.cat-btn.act{background:var(--rose);color:#fff;border-color:var(--rose)}
-.cat-btn:hover{border-color:var(--rose-l);color:var(--rose)}
-
-
-.pol-card{background:rgba(255,255,255,0.88);backdrop-filter:blur(4px);border:1.5px solid rgba(232,168,158,0.35);border-radius:12px;cursor:pointer;transition:all .25s;box-shadow:0 2px 10px rgba(196,115,106,.12);overflow:hidden}
-.pol-card:hover{transform:translateY(-4px);border-color:var(--rose-l);box-shadow:0 8px 22px rgba(196,115,106,.22)}
-.pol-card-body{padding:16px 12px;text-align:center}
-.pol-card-name{font-size:12px;font-weight:700;margin-bottom:4px;color:var(--text)}
-.pol-card-desc{font-size:10px;color:var(--soft);margin-bottom:6px}
-.pol-card-price{font-size:13px;font-weight:700;color:var(--rose);font-family:'Playfair Display',serif}
-
-
-/* Como funciona */
-.como-funciona{padding:32px 16px;max-width:900px;margin:0 auto}
-.como-steps{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
-.como-step{flex:1;min-width:140px;max-width:180px;text-align:center;padding:16px 12px;background:rgba(255,255,255,0.88);border-radius:14px;border:1.5px solid rgba(232,168,158,0.35);box-shadow:0 2px 10px rgba(196,115,106,.10)}
-.como-step-num{width:36px;height:36px;border-radius:50%;background:var(--rose);color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
-.como-step-icon{font-size:28px;margin-bottom:8px}
-.como-step-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px}
-.como-step-desc{font-size:11px;color:var(--soft);line-height:1.5}
-.como-arrow{font-size:20px;color:var(--rose-l);align-self:center;display:none}
-@media(min-width:400px){.como-arrow{display:block}}
-
-/* Selos de confiança */
-.selos{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:16px 14px;max-width:900px;margin:0 auto}
-.selo{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.88);border:1.5px solid rgba(232,168,158,0.35);border-radius:50px;padding:8px 16px;box-shadow:0 2px 8px rgba(196,115,106,.10)}
-.selo-icon{font-size:18px}
-.selo-text{font-size:12px;font-weight:700;color:var(--text)}
-
-/* Pagamentos */
-.pagamentos{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center;padding:12px 14px;border-top:1px solid var(--border);margin-top:8px}
-.pag-label{font-size:11px;color:var(--soft);font-weight:500;margin-right:4px}
-.pag-badge{background:#f5f5f5;border:1px solid #ddd;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;color:#333}
-.pag-badge.pix{background:#32BCAD;color:#fff;border-color:#32BCAD}
-.pag-badge.credito{background:#1a1f71;color:#fff;border-color:#1a1f71}
-.pag-badge.debito{background:#f7941d;color:#fff;border-color:#f7941d}
-
-
-#pages-wrapper{position:relative;min-height:100vh}
-
-
-/* Mini header das subpáginas */
-.sub-header{display:none;position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(255,250,247,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:10px 16px;align-items:center;justify-content:space-between}
-.sub-header.vis{display:flex}
-.sub-header-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--rose)}
-.sub-back-btn{display:flex;align-items:center;gap:6px;background:none;border:none;color:var(--rose);font-weight:700;font-size:13px;cursor:pointer;padding:6px 10px;border-radius:50px;background:var(--rose-p)}
-
-
-.btn-shopee{width:100%;padding:13px;background:#ee4d2d;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;text-decoration:none}
-.btn-shopee:hover{background:#d44226}
-
 </style>
-<script>
-(function(){
-  var manifest = {
-    "name": "IMAGINAE",
-    "short_name": "IMAGINAE",
-    "description": "Papelaria Criativa — Você imagina e a gente cria",
-    "start_url": ".",
-    "display": "standalone",
-    "background_color": "#FDF0EE",
-    "theme_color": "#C4736A",
-    "orientation": "portrait",
-    "icons": [
-      {"src": "https://res.cloudinary.com/jrmiaduy/image/upload/v1785117441/gclzj4bbnflaxvhcimta.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
-      {"src": "https://res.cloudinary.com/jrmiaduy/image/upload/v1785117441/gclzj4bbnflaxvhcimta.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
-    ]
-  };
-  var blob = new Blob([JSON.stringify(manifest)], {type: 'application/manifest+json'});
-  var url = URL.createObjectURL(blob);
-  var link = document.createElement('link');
-  link.rel = 'manifest';
-  link.href = url;
-  document.head.appendChild(link);
-})();
-</script>
 </head>
 <body>
 
-<header class="hdr">
-  <div class="hdr-top">
-    <div class="brand" onclick="showPg('home')">
-      <img class="brand-logo" src="https://res.cloudinary.com/jrmiaduy/image/upload/v1785117441/gclzj4bbnflaxvhcimta.png" alt="Imaginae">
-      <div><div class="brand-name">IMAGINAE</div><div class="brand-sub">Papelaria Criativa</div></div>
-    </div>
-    <button class="cart-btn" onclick="openCart()">🛒 <span id="cartCount">0</span></button>
-  </div>
-
-</header>
-
-<div class="cbar-wrap">
-  <div class="cbar">
-  <span class="cbar-icon">🛒</span>
-  <span><span class="cnum" id="pedidosHoje">--</span> pedidos hoje</span>
-  <span style="margin:0 8px;opacity:0.5">|</span>
-  <span class="cbar-icon">🚚</span>
-  <span>Entrega em <strong>2 a 5 dias úteis</strong></span>
-</div>
-  <a class="cbar2" href="https://br.shp.ee/xayohpvv" target="_blank">
-    <span>🛍️</span>
-    <span>Também na Shopee! Use seu cupom de</span>
-    <span class="cbar2-badge">FRETE GRÁTIS</span>
-    <span>→ Clique aqui</span>
-  </a>
-</div>
-  <div class="live-widget" style="margin:10px auto">
-    <span class="live-dot"></span>
-    <span class="live-text"><span class="live-num" id="liveNum">23</span> pessoas vendo agora</span>
+<!-- ===== TELA DE LOGIN ===== -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">IMAGINAE</div>
+    <div class="login-sub">PAINEL DE GESTÃO</div>
+    <div class="login-error" id="loginError"></div>
+    <input type="email" id="loginEmail" placeholder="E-mail" autocomplete="username">
+    <input type="password" id="loginSenha" placeholder="Senha" autocomplete="current-password">
+    <button class="login-btn" id="btnLogin">Entrar</button>
   </div>
 </div>
 
-<div class="co" id="co" onclick="closeCart()"></div>
-<div class="cdraw" id="cdraw">
-  <div class="cdraw-hdr"><h3>🛒 Carrinho</h3><button onclick="closeCart()" style="background:var(--rose-p);border:none;border-radius:50%;width:32px;height:32px;font-size:18px;cursor:pointer;color:var(--rose);font-weight:700">✕</button></div>
-  <div class="cbody"><div class="cempty" id="cempty">Nenhum item ainda 😊</div><div id="citems"></div></div>
-  <div class="cfooter" id="cfoot" style="display:none">
-    <div class="ctrow"><span class="ctlbl">Total</span><span class="ctval" id="ctval">R$ 0,00</span></div>
-    <button class="btn-wa" onclick="sendWA()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-      Enviar pedido pelo WhatsApp
-    </button>
-    <a href="https://br.shp.ee/xayohpvv" target="_blank" class="btn-shopee">🛍️ Comprar pela Shopee</a>
-    <button class="btn-clr" onclick="clearCart()">🗑️ Limpar</button>
-  </div>
-</div>
-
-<div class="toast" id="toast">✅ Adicionado!</div>
-
-
-<!-- Sub-header das subpáginas -->
-<div class="sub-header" id="sub-header">
-  <button class="sub-back-btn" onclick="showPg('home')">← Início</button>
-  <span class="sub-header-title" id="sub-header-title">Produtos</span>
-  <div style="width:80px;text-align:right">
-    <button class="cfab" id="cfab2" style="position:relative;bottom:auto;right:auto;display:none;padding:6px 12px;font-size:12px" onclick="openCart()">🛒 <span id="fabN2">0</span></button>
-  </div>
-</div>
-
-<div id="pages-wrapper">
-<!-- HOME -->
-<div id="pg-home" class="pg act">
-  <div class="hero">
-    <img class="h-logo" src="https://res.cloudinary.com/jrmiaduy/image/upload/v1785117441/gclzj4bbnflaxvhcimta.png" alt="Imaginae">
-    <div class="h-name">IMAGINAE</div>
-    <div class="h-sub">Papelaria Criativa</div>
-    <div class="h-tag">"Você imagina e a gente cria"</div>
-    <div class="selos" style="margin:16px 0 4px">
-      <div class="selo"><span class="selo-icon">👥</span><span class="selo-text">+100 clientes atendidos</span></div>
-      <div class="selo"><span class="selo-icon">🚚</span><span class="selo-text">Entrega garantida</span></div>
-      <div class="selo"><span class="selo-icon">📦</span><span class="selo-text">Entrega em 2 a 5 dias úteis</span></div>
-      <div class="selo"><span class="selo-icon">🎨</span><span class="selo-text">Criamos a arte pra você</span></div>
+<!-- ===== APP ===== -->
+<div id="app">
+  <div class="hdr">
+    <div class="hdr-brand">IMAGINAE<span>Painel de Gestão</span></div>
+    <div class="hdr-right">
+      <span class="hdr-email" id="userEmailLabel"></span>
+      <button class="btn-logout" id="btnLogout">Sair</button>
     </div>
   </div>
 
-  <div class="h-shortcuts" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%;max-width:340px;margin:20px auto;padding:0 16px">
-    <div class="shortcut" onclick="showPg('bottons')"><span class="sc-icon">📌</span><span class="sc-label">Bottons</span></div>
-    <div class="shortcut" onclick="showPg('marcapaginas')"><span class="sc-icon">🔖</span><span class="sc-label">Marca-Páginas</span></div>
-    <div class="shortcut" onclick="showPg('lembrancinhas')"><span class="sc-icon">🎀</span><span class="sc-label">Lembrancinhas</span></div>
-    <div class="shortcut" onclick="document.getElementById('dep-a').scrollIntoView({behavior:'smooth'})"><span class="sc-icon">⭐</span><span class="sc-label">Depoimentos</span></div>
-    <div class="shortcut" onclick="showPg('personalizados')"><span class="sc-icon">✨</span><span class="sc-label">Personalizados</span></div>
+  <div class="tabs">
+    <button class="tab-btn act" data-view="dashboard">📊 Resumo</button>
+    <button class="tab-btn" data-view="pedidos">📦 Pedidos</button>
+    <button class="tab-btn" data-view="equipe">👥 Equipe</button>
   </div>
 
-  </div>
-
-
-  <!-- Como Funciona -->
-  <div class="como-funciona">
-    <p class="eyebrow" style="text-align:center">✦ Simples assim ✦</p>
-    <h2 class="s-title" style="text-align:center;margin-bottom:20px">Como Funciona</h2>
-    <div class="como-steps">
-      <div class="como-step">
-        <div class="como-step-icon">🛍️</div>
-        <div class="como-step-num">1</div>
-        <div class="como-step-title">Escolha seu produto</div>
-        <div class="como-step-desc">Navegue pelas categorias e encontre o que você procura</div>
+  <!-- DASHBOARD -->
+  <div class="view act" id="view-dashboard">
+    <div class="dash-grid">
+      <div class="dash-card">
+        <div class="dash-num" id="dashTotalPedidos">--</div>
+        <div class="dash-label">Pedidos no total</div>
       </div>
-      <div class="como-arrow">→</div>
-      <div class="como-step">
-        <div class="como-step-icon">✏️</div>
-        <div class="como-step-num">2</div>
-        <div class="como-step-title">Personalize do seu jeito</div>
-        <div class="como-step-desc">Escolha o modelo, tamanho, quantidade e acabamento</div>
+      <div class="dash-card">
+        <div class="dash-num" id="dashPendentes">--</div>
+        <div class="dash-label">Pendentes</div>
       </div>
-      <div class="como-arrow">→</div>
-      <div class="como-step">
-        <div class="como-step-icon">💬</div>
-        <div class="como-step-num">3</div>
-        <div class="como-step-title">Envie o pedido pelo site</div>
-        <div class="como-step-desc">Clique em "Enviar pelo WhatsApp" e finalize direto comigo!</div>
+      <div class="dash-card">
+        <div class="dash-num" id="dashHoje">--</div>
+        <div class="dash-label">Pedidos hoje</div>
       </div>
-      <div class="como-arrow">→</div>
-      <div class="como-step">
-        <div class="como-step-icon">📦</div>
-        <div class="como-step-num">4</div>
-        <div class="como-step-title">Receba em casa</div>
-        <div class="como-step-desc">Entrega em 2 a 5 dias úteis para todo o Brasil</div>
+      <div class="dash-card">
+        <div class="dash-num" id="dashFaturamento">--</div>
+        <div class="dash-label">Faturamento total (R$)</div>
+      </div>
+      <div class="dash-card wide">
+        <div class="sheet-label" style="margin-bottom:10px">Pedidos por status</div>
+        <div id="dashStatusBreakdown"></div>
       </div>
     </div>
   </div>
 
-
-  <!-- Seção Quem Faz -->
-  <div class="quem-faz">
-    <div class="quem-faz-inner">
-      <img class="quem-faz-foto" src="https://res.cloudinary.com/jrmiaduy/image/upload/v1785117440/s2lkymxy8ttluyplz4h5.png" alt="Vanessa Silva — Fundadora da Imaginae">
-      <div class="quem-faz-info">
-        <p class="eyebrow">✦ Por trás da Imaginae ✦</p>
-        <div class="quem-faz-nome">Vanessa Silva</div>
-        <div class="quem-faz-cargo">Fundadora & Criadora</div>
-        <p class="quem-faz-bio">Oi! Sou a Vanessa, fundadora da <strong>Imaginae Papelaria Criativa</strong>. Aqui você encontra muito mais do que bottons — crio <strong>lembrancinhas, marca-páginas, adesivos, chaveiros</strong> e tudo que envolve papelaria criativa com personalidade. Cada peça é feita com carinho, atenção aos detalhes e muito amor pela criatividade. Você imagina, eu crio! 💗</p>
-      </div>
-    </div>
-  </div>
-
-<div class="deps" id="dep-a">
-    <div style="text-align:center"><p class="eyebrow">✦ O que nossos clientes dizem ✦</p><h2 class="s-title">Depoimentos</h2></div>
-    <div class="dgrid">
-      <div class="dcard">
-        <div class="dstars">★★★★★</div>
-        <p class="dtext">"Amei os bottons! Chegaram rápido, embalados com cuidado e a qualidade é incrível! Vou com certeza comprar mais vezes 💕"</p>
-        <div class="dautor">
-          <img class="dav-img" src="https://res.cloudinary.com/jrmiaduy/image/upload/v1785117439/tknkwmwuf7y24myi7gsa.png" alt="Ana Paula">
-          <div><div class="dname">Ana Paula S.</div><div class="dloc">São Paulo, SP</div></div>
-        </div>
-        <span class="dprod">Bottons Congresso 2026</span>
-      </div>
-      <div class="dcard">
-        <div class="dstars">★★★★★</div>
-        <p class="dtext">"Pedi com arte personalizada e ficou perfeito! Atendimento super atencioso e rápido. Nota 10! 🙌"</p>
-        <div class="dautor">
-          <img class="dav-img" src="https://res.cloudinary.com/jrmiaduy/image/upload/v1785117433/baawg2stdus1h8l68blj.png" alt="Carlos">
-          <div><div class="dname">Carlos M.</div><div class="dloc">Rio de Janeiro, RJ</div></div>
-        </div>
-        <span class="dprod">Bottons Personalizados</span>
-      </div>
-      <div class="dcard">
-        <div class="dstars">★★★★★</div>
-        <p class="dtext">"Comprei para o congresso. Todo mundo adorou! As cores ficaram lindíssimas, superou minhas expectativas! 😍"</p>
-        <div class="dautor">
-          <img class="dav-img" src="https://res.cloudinary.com/jrmiaduy/image/upload/v1785117436/gckcqzzpvymrll8hd7wx.png" alt="Mariana">
-          <div><div class="dname">Mariana L.</div><div class="dloc">Belo Horizonte, MG</div></div>
-        </div>
-        <span class="dprod">Bottons Congresso 2026</span>
-      </div>
-      <div class="dcard">
-        <div class="dstars">★★★★★</div>
-        <p class="dtext">"Super fácil de pedir! A qualidade é excelente e o acabamento impecável. Recomendo demais! ✨"</p>
-        <div class="dautor">
-          <img class="dav-img" src="https://res.cloudinary.com/jrmiaduy/image/upload/v1785117437/acwtfsco06kicvchgyyx.png" alt="Fernanda">
-          <div><div class="dname">Fernanda R.</div><div class="dloc">Curitiba, PR</div></div>
-        </div>
-        <span class="dprod">Bottons Com Ímã</span>
-      </div>
-      <div class="dcard">
-        <div class="dstars">★★★★★</div>
-        <p class="dtext">"O holográfico é ainda mais lindo pessoalmente! As crianças ficaram encantadas com as cores. 🌈"</p>
-        <div class="dautor">
-          <img class="dav-img" src="https://res.cloudinary.com/jrmiaduy/image/upload/v1785117438/euhlp3zz5viqi2vqhjde.png" alt="Roberto">
-          <div><div class="dname">Roberto A.</div><div class="dloc">Fortaleza, CE</div></div>
-        </div>
-        <span class="dprod">Bottons Holográfico</span>
-      </div>
-      <div class="dcard">
-        <div class="dstars">★★★★★</div>
-        <p class="dtext">"Pedi 20 unidades para a congregação. Todos ficaram impressionados com a qualidade! 🙏"</p>
-        <div class="dautor">
-          <div class="dav-initials" aria-hidden="true">SB</div>
-          <div><div class="dname">Sônia B.</div><div class="dloc">Porto Alegre, RS</div></div>
-        </div>
-        <span class="dprod">Bottons Congresso 2026</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="faq">
-    <div style="text-align:center;margin-bottom:20px"><p class="eyebrow">✦ Tire suas dúvidas ✦</p><h2 class="s-title">Perguntas Frequentes</h2></div>
-    <div class="fitem"><div class="fq" onclick="tfaq(this)">Vocês fazem arte personalizada? <span class="farrow">+</span></div><div class="fa">Sim! Escolha "Criação de Arte" nos Bottons Personalizados. Apenas R$ 2,00 a mais por unidade.</div></div>
-    <div class="fitem"><div class="fq" onclick="tfaq(this)">Qual é o prazo de entrega? <span class="farrow">+</span></div><div class="fa">Produção em 1 a 2 dias úteis após confirmação. Entrega em até 2 a 5 dias úteis dependendo da sua região!</div></div>
-    <div class="fitem"><div class="fq" onclick="tfaq(this)">Enviam para todo o Brasil? <span class="farrow">+</span></div><div class="fa">Sim! Enviamos para todo o território nacional.</div></div>
-    <div class="fitem"><div class="fq" onclick="tfaq(this)">Qual a política de troca? <span class="farrow">+</span></div><div class="fa">Se o produto chegar com defeito, fazemos a troca em até 2 dias após o recebimento. Entre em contato pelo WhatsApp com foto do produto e do defeito.</div></div>
-    <div class="fitem"><div class="fq" onclick="tfaq(this)">Quais formas de pagamento? <span class="farrow">+</span></div><div class="fa">Aceitamos PIX, cartão de crédito e cartão de débito. O pagamento é combinado diretamente pelo WhatsApp após o pedido.</div></div>
-    <div class="fitem"><div class="fq" onclick="tfaq(this)">Qual é o pedido mínimo? <span class="farrow">+</span></div><div class="fa">Mínimo de 1 unidade.</div></div>
-    <div class="fitem"><div class="fq" onclick="tfaq(this)">Formas de pagamento? <span class="farrow">+</span></div><div class="fa">Cartão de crédito/débito, Pix e Débito.</div></div>
-    <div class="fitem"><div class="fq" onclick="tfaq(this)">Quais tamanhos disponíveis? <span class="farrow">+</span></div><div class="fa">32mm (pequeno), 44mm (médio) e 58mm (grande).</div></div>
-  </div>
-</div>
-
-<!-- BOTTONS -->
-<div id="pg-bottons" class="pg">
-  
-  <div class="s-hero"><p class="eyebrow">✦ Coleção ✦</p><h2 class="s-title">Bottons</h2><p class="s-body">Alta qualidade para todas as ocasiões!</p></div>
-  <div style="max-width:900px;margin:0 auto">
-    <div class="stabs">
-      <button class="stab act" onclick="showSub('cong',this)">📌 Congresso 2026</button>
-      <button class="stab"     onclick="showSub('tem',this)">🎨 Temáticos</button>
-      <button class="stab"     onclick="showSub('pers',this)">✏️ Personalizados</button>
-    </div>
-    <div id="sub-cong" class="scon act">
-      <div class="pgrid"><div class="pcard" onclick="openPdModal('m01','Modelo 1','https://res.cloudinary.com/jrmiaduy/image/upload/v1785117432/bk4li4h1ahaapzyfaldf.jpg')">
-      <div class="pimg"><img src="https://res.cloudinary.com/jrmiaduy/image/upload/v1785117432/bk4li4h1ahaapzyfaldf.jpg" alt="Modelo 1" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 1</div><div class="ptag">✦ Disponível</div></div>
-    </div><div class="pcard" onclick="openPdModal('m02','Modelo 2','https://i.imgur.com/v3b8TNv.jpeg')">
-      <div class="pimg"><img src="https://i.imgur.com/v3b8TNv.jpeg" alt="Modelo 2" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 2</div><div class="ptag">✦ Disponível</div></div>
-    </div><div class="pcard" onclick="openPdModal('m03','Modelo 3','https://i.imgur.com/vQsngxr.jpeg')">
-      <div class="pimg"><img src="https://i.imgur.com/vQsngxr.jpeg" alt="Modelo 3" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 3</div><div class="ptag">✦ Disponível</div></div>
-    </div><div class="pcard" onclick="openPdModal('m04','Modelo 4','https://i.imgur.com/dA7tyRn.jpeg')">
-      <div class="pimg"><img src="https://i.imgur.com/dA7tyRn.jpeg" alt="Modelo 4" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 4</div><div class="ptag">✦ Disponível</div></div>
-    </div><div class="pcard" onclick="openPdModal('m05','Modelo 5','https://i.imgur.com/4EtpkyW.jpeg')">
-      <div class="pimg"><img src="https://i.imgur.com/4EtpkyW.jpeg" alt="Modelo 5" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 5</div><div class="ptag">✦ Disponível</div></div>
-    </div><div class="pcard" onclick="openPdModal('m06','Modelo 6','https://i.imgur.com/B7KHPQV.jpeg')">
-      <div class="pimg"><img src="https://i.imgur.com/B7KHPQV.jpeg" alt="Modelo 6" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 6</div><div class="ptag">✦ Disponível</div></div>
-    </div><div class="pcard" onclick="openPdModal('m07','Modelo 7','https://i.imgur.com/Ru0tuow.jpeg')">
-      <div class="pimg"><img src="https://i.imgur.com/Ru0tuow.jpeg" alt="Modelo 7" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 7</div><div class="ptag">✦ Disponível</div></div>
-    </div><div class="pcard" onclick="openPdModal('m08','Modelo 8','https://i.imgur.com/5GJVi5x.jpeg')">
-      <div class="pimg"><img src="https://i.imgur.com/5GJVi5x.jpeg" alt="Modelo 8" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 8</div><div class="ptag">✦ Disponível</div></div>
-    </div><div class="pcard" onclick="openPdModal('m09','Modelo 9','https://i.imgur.com/o9xdRoj.jpeg')">
-      <div class="pimg"><img src="https://i.imgur.com/o9xdRoj.jpeg" alt="Modelo 9" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 9</div><div class="ptag">✦ Disponível</div></div>
-    </div><div class="pcard" onclick="openPdModal('m10','Modelo 10','https://i.imgur.com/qlsG6Am.jpeg')">
-      <div class="pimg"><img src="https://i.imgur.com/qlsG6Am.jpeg" alt="Modelo 10" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 10</div><div class="ptag">✦ Disponível</div></div>
-    </div><div class="pcard" onclick="openPdModal('m11','Modelo 11','https://i.imgur.com/67R4Sk6.jpeg')">
-      <div class="pimg"><img src="https://i.imgur.com/67R4Sk6.jpeg" alt="Modelo 11" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 11</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m12','Modelo 12','https://imaginae-papelaria-criativa.vercel.app/botton-m28.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m28.jpg" alt="Modelo 12" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 12</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m13','Modelo 13','https://imaginae-papelaria-criativa.vercel.app/botton-m29.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m29.jpg" alt="Modelo 13" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 13</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m14','Modelo 14','https://imaginae-papelaria-criativa.vercel.app/botton-m31.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m31.jpg" alt="Modelo 14" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 14</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m15','Modelo 15','https://imaginae-papelaria-criativa.vercel.app/botton-m32.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m32.jpg" alt="Modelo 15" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 15</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m16','Modelo 16','https://imaginae-papelaria-criativa.vercel.app/botton-m33.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m33.jpg" alt="Modelo 16" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 16</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m17','Modelo 17','https://imaginae-papelaria-criativa.vercel.app/botton-m34.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m34.jpg" alt="Modelo 17" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 17</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m18','Modelo 18','https://imaginae-papelaria-criativa.vercel.app/botton-m35.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m35.jpg" alt="Modelo 18" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 18</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m19','Modelo 19','https://imaginae-papelaria-criativa.vercel.app/botton-m36.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m36.jpg" alt="Modelo 19" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 19</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m20','Modelo 20','https://imaginae-papelaria-criativa.vercel.app/botton-m37.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m37.jpg" alt="Modelo 20" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 20</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m21','Modelo 21','https://imaginae-papelaria-criativa.vercel.app/botton-m38.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m38.jpg" alt="Modelo 21" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 21</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m22','Modelo 22','https://imaginae-papelaria-criativa.vercel.app/botton-m39.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m39.jpg" alt="Modelo 22" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 22</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m23','Modelo 23','https://imaginae-papelaria-criativa.vercel.app/botton-m40.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m40.jpg" alt="Modelo 23" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 23</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m24','Modelo 24','https://imaginae-papelaria-criativa.vercel.app/botton-m41.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m41.jpg" alt="Modelo 24" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 24</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m25','Modelo 25','https://imaginae-papelaria-criativa.vercel.app/botton-m42.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m42.jpg" alt="Modelo 25" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 25</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m26','Modelo 26','https://imaginae-papelaria-criativa.vercel.app/botton-m43.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m43.jpg" alt="Modelo 26" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 26</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m27','Modelo 27','https://imaginae-papelaria-criativa.vercel.app/botton-m44.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m44.jpg" alt="Modelo 27" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 27</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m28','Modelo 28','https://imaginae-papelaria-criativa.vercel.app/botton-m45.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m45.jpg" alt="Modelo 28" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 28</div><div class="ptag">✦ Disponível</div></div>
-    </div>
-    <div class="pcard" onclick="openPdModal('m29','Modelo 29','https://imaginae-papelaria-criativa.vercel.app/botton-m47.jpg')">
-      <div class="pimg"><img src="https://imaginae-papelaria-criativa.vercel.app/botton-m47.jpg" alt="Modelo 29" loading="lazy"></div>
-      <div class="pinfo"><div class="pname">Modelo 29</div><div class="ptag">✦ Disponível</div></div>
-    </div></div>
-    </div>
-</div></div>
-      <div class="aform">
-        <h3>➕ Adicionar ao carrinho</h3>
-        <div class="fr"><label>Modelo</label><select id="cg-m"><option value="m01">Modelo 1</option><option value="m02">Modelo 2</option><option value="m03">Modelo 3</option><option value="m04">Modelo 4</option><option value="m05">Modelo 5</option><option value="m06">Modelo 6</option><option value="m07">Modelo 7</option><option value="m08">Modelo 8</option><option value="m09">Modelo 9</option><option value="m10">Modelo 10</option><option value="m11">Modelo 11</option></select></div>
-        <div class="fgrid">
-          <div class="fr"><label>Tipo</label><select id="cg-t" onchange="cCg()"><option value="normal">📌 Normal</option><option value="ima">🔲 Com Ímã</option><option value="holo">🌈 Holográfico</option><option value="holoima">🌈🔲 Holográfico + Ímã</option></select></div>
-          <div class="fr"><label>Tamanho</label><select id="cg-s" onchange="cCg()"><option value="32">32mm</option><option value="44">44mm</option><option value="58">58mm</option></select></div>
-        </div>
-        <div class="fr"><label>Quantidade (mín. 1)</label><input type="number" id="cg-q" value="1" min="1" oninput="cCg()"></div>
-        <div class="pprev"><span>Subtotal:</span><strong id="cg-p">R$ 6,00</strong></div>
-        <button class="btn-add" onclick="addCg()">🛒 Adicionar ao carrinho</button>
-      </div>
-    </div>
-    <div id="sub-tem" class="scon"><div class="cs"><div class="cs-i">🎨</div><h3>Bottons Temáticos</h3><p>Em breve! Novos modelos chegando.</p></div></div>
-    <div id="sub-pers" class="scon">
-      <div class="aform">
-        <h3>📸 Opção 1 — Envie sua foto</h3>
-        <p style="font-size:13px;color:var(--soft);margin-bottom:14px">Você envia a foto e nós produzimos!</p>
-        <div class="fr"><label>Selecione suas fotos</label>
-          <div class="uarea" onclick="document.getElementById('phi').click()">
-            <input type="file" id="phi" multiple accept="image/*" onchange="prevPhotos(this)">
-            <div style="font-size:24px">📷</div>
-            <div style="font-size:13px;color:var(--soft)">Toque para selecionar</div>
-          </div>
-          <div class="uprev" id="uprev"></div>
-        </div>
-        <div class="fgrid">
-          <div class="fr"><label>Qtd. fotos diferentes</label><input type="number" id="p1-nf" value="1" min="1" oninput="cP1()"></div>
-          <div class="fr"><label>Qtd. de cada foto</label><input type="number" id="p1-q" value="1" min="1" oninput="cP1()"></div>
-        </div>
-        <div class="fgrid">
-          <div class="fr"><label>Tamanho</label><select id="p1-s" onchange="cP1()"><option value="32">32mm</option><option value="44">44mm</option><option value="58">58mm</option></select></div>
-          <div class="fr"><label>Tipo</label><select id="p1-t" onchange="cP1()"><option value="normal">📌 Normal</option><option value="ima">🔲 Com Ímã</option><option value="holo">🌈 Holográfico</option><option value="holoima">🌈🔲 Holográfico + Ímã</option></select></div>
-        </div>
-        <div class="pprev"><span>Total estimado:</span><strong id="p1-p">R$ 6,00</strong></div>
-        <button class="btn-add" onclick="addFoto()">🛒 Adicionar ao carrinho</button>
-      </div>
-      <div class="aform" style="margin-top:14px;border-color:var(--teal-l)">
-        <h3>🎨 Opção 2 — Criação de Arte <span style="font-size:12px;background:var(--teal-p);color:var(--teal);padding:3px 9px;border-radius:10px;font-weight:600">+R$ 2,00/un</span></h3>
-        <p style="font-size:13px;color:var(--soft);margin-bottom:14px">Criamos a arte especialmente para você!</p>
-        <div class="fr"><label>Descreva a arte</label><textarea id="p2-obs" placeholder="Ex: Botton com meu nome, tema floral, cores rosa e dourado..."></textarea></div>
-        <div class="fgrid">
-          <div class="fr"><label>Tamanho</label><select id="p2-s" onchange="cP2()"><option value="32">32mm</option><option value="44">44mm</option><option value="58">58mm</option></select></div>
-          <div class="fr"><label>Tipo</label><select id="p2-t" onchange="cP2()"><option value="normal">📌 Normal</option><option value="ima">🔲 Com Ímã</option><option value="holo">🌈 Holográfico</option><option value="holoima">🌈🔲 Holográfico + Ímã</option></select></div>
-        </div>
-        <div class="fr"><label>Quantidade (mín. 1)</label><input type="number" id="p2-q" value="1" min="1" oninput="cP2()"></div>
-        <div class="pprev"><span>Total (inclui +R$2/un criação):</span><strong id="p2-p">R$ 10,00</strong></div>
-        <button class="btn-add" style="background:var(--teal)" onclick="addArte()">🛒 Adicionar ao carrinho</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MARCA-PÁGINAS -->
-<div id="pg-marcapaginas" class="pg">
-  
-  <div class="s-hero">
-    <p class="eyebrow">✦ Novidade ✦</p>
-    <h2 class="s-title">Marca-Páginas</h2>
-    <p class="s-body">Marca-páginas personalizados para deixar sua leitura ainda mais especial ✨</p>
-  </div>
-
-  <!-- Filtros de categoria -->
-  <div class="cat-bar" id="mp-cat-bar">
-    <button class="cat-btn act" onclick="filterMp('biblicos')">📖 Bíblicos</button>
-    <button class="cat-btn" onclick="filterMp('fofinhos')">🐾 Fofinhos</button>
-    <button class="cat-btn" onclick="filterMp('tematicos')">🎀 Temáticos</button>
-    <button class="cat-btn" onclick="filterMp('floral')">🦋 Floral/Romântico</button>
-    <button class="cat-btn" onclick="filterMp('personalizado')">✏️ Personalizado</button>
-  </div>
-
-  <!-- Grid produtos -->
-  <div class="mp-grid" id="mp-prod-grid">
-
-    <!-- BÍBLICOS -->
-    <div class="mp-card" data-cat="biblicos" onclick="openMpModal('mp1')">
-      <div class="mp-img"><img src="https://res.cloudinary.com/jrmiaduy/image/upload/v1785117431/lkuxbupuvusibum7ijw9.png" alt="15 Textos de Consolo" loading="lazy"></div>
-      <div class="mp-info">
-        <div class="mp-name">Modelo 1 — 15 Textos de Consolo</div>
-        <div class="mp-desc">O Amor de Jeová — Consolo para o coração</div>
-        <div class="mp-prices">
-          <span class="mp-price-tag">Normal R$4</span>
-          <span class="mp-price-tag">Laminado R$5</span>
-          <span class="mp-price-tag">Holográfico R$6</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="mp-card" data-cat="biblicos" onclick="openMpModal('mp2')">
-      <div class="mp-img"><img src="https://res.cloudinary.com/jrmiaduy/image/upload/v1785117434/nvkvzx9q7taki7txxsnm.png" alt="Leitura da Bíblia" loading="lazy"></div>
-      <div class="mp-info">
-        <div class="mp-name">Modelo 2 — Leitura da Bíblia</div>
-        <div class="mp-desc">Programa de leitura por assunto</div>
-        <div class="mp-prices">
-          <span class="mp-price-tag">Normal R$4</span>
-          <span class="mp-price-tag">Laminado R$5</span>
-          <span class="mp-price-tag">Holográfico R$6</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- FOFINHOS -->
-    <div class="mp-card" data-cat="fofinhos" style="cursor:default">
-      <div class="mp-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--rose-p),var(--teal-p));aspect-ratio:2/5">
-        <div style="text-align:center;padding:16px"><div style="font-size:36px">🐾</div><div style="font-size:12px;color:var(--soft);margin-top:8px">Em breve ✨</div></div>
-      </div>
-      <div class="mp-info"><div class="mp-name">Fofinhos</div><div class="mp-desc">Em breve ✨</div></div>
-    </div>
-
-    <!-- TEMÁTICOS -->
-    <div class="mp-card" data-cat="tematicos" style="cursor:default">
-      <div class="mp-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--rose-p),var(--teal-p));aspect-ratio:2/5">
-        <div style="text-align:center;padding:16px"><div style="font-size:36px">🎀</div><div style="font-size:12px;color:var(--soft);margin-top:8px">Em breve ✨</div></div>
-      </div>
-      <div class="mp-info"><div class="mp-name">Temáticos</div><div class="mp-desc">Em breve ✨</div></div>
-    </div>
-
-    <!-- FLORAL/ROMÂNTICO -->
-    <div class="mp-card" data-cat="floral" style="cursor:default">
-      <div class="mp-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--rose-p),var(--teal-p));aspect-ratio:2/5">
-        <div style="text-align:center;padding:16px"><div style="font-size:36px">🦋</div><div style="font-size:12px;color:var(--soft);margin-top:8px">Em breve ✨</div></div>
-      </div>
-      <div class="mp-info"><div class="mp-name">Floral/Romântico</div><div class="mp-desc">Em breve ✨</div></div>
-    </div>
-
-    <!-- PERSONALIZADO -->
-    <div class="mp-card" data-cat="personalizado" onclick="openMpModal('personalizado')">
-      <div class="mp-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--rose-p),var(--teal-p));aspect-ratio:2/5">
-        <div style="text-align:center;padding:16px"><div style="font-size:36px">✨</div><div style="font-family:'Playfair Display',serif;font-size:14px;color:var(--rose);font-weight:700;margin-top:8px">Personalizado</div><div style="font-size:11px;color:var(--soft);margin-top:4px">+R$2,00/un</div></div>
-      </div>
-      <div class="mp-info">
-        <div class="mp-name">Modelo Personalizado</div>
-        <div class="mp-desc">Sua ideia, sua arte — feita do zero +R$2,00/un</div>
-        <div class="mp-prices">
-          <span class="mp-price-tag">Normal R$6</span>
-          <span class="mp-price-tag">Laminado R$7</span>
-          <span class="mp-price-tag">Holográfico R$8</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Form pedido -->
-  <div class="mp-form" id="mp-form-section">
-    <h3 id="mp-form-title">🔖 Adicionar ao Carrinho</h3>
-    <div class="fr">
-      <label>Modelo</label>
-      <select id="mp-modelo" onchange="mpModeloChange()">
-        <option value="mp1">Modelo 1 — 15 Textos de Consolo</option>
-        <option value="mp2">Modelo 2 — Leitura da Bíblia</option>
-        <option value="personalizado">Personalizado (+R$2,00/un)</option>
+  <!-- PEDIDOS -->
+  <div class="view" id="view-pedidos">
+    <div class="filters">
+      <input type="search" id="buscaPedido" placeholder="Buscar por nome, código ou telefone...">
+      <select id="filtroStatus">
+        <option value="">Todos os status</option>
+        <option value="Pendente">Pendente</option>
+        <option value="Em_producao">Em produção</option>
+        <option value="Enviado">Enviado</option>
+        <option value="Entregue">Entregue</option>
+        <option value="Cancelado">Cancelado</option>
       </select>
     </div>
-    <div class="fr">
-      <label>Tipo</label>
-      <select id="mp-tipo" onchange="mpCalc()">
-        <option value="normal">Normal — R$4,00</option>
-        <option value="laminado">Laminado — R$5,00</option>
-        <option value="holo">Holográfico — R$6,00</option>
-        <option value="lamholo">Laminado + Holográfico — R$7,00</option>
-      </select>
-    </div>
-    <div class="fgrid">
-      <div class="fr">
-        <label>Quantidade (mín. 1)</label>
-        <input type="number" id="mp-qtd" value="1" min="1" oninput="mpCalc()">
-      </div>
-      <div class="fr">
-        <label>Subtotal</label>
-        <div class="pprev"><strong id="mp-preco">R$4,00</strong></div>
-      </div>
-    </div>
-    <div class="fr" id="mp-obs-wrap" style="display:none">
-      <label>Observações / Personalização</label>
-      <textarea id="mp-obs" placeholder="Ex: Descreva sua ideia, tema, cores preferidas..."></textarea>
-    </div>
-    <button class="btn-add" onclick="mpAddCart()">🛒 Adicionar ao Carrinho</button>
-  </div>
-
-</div>
-
-<!-- LEMBRANCINHAS -->
-
-
-<!-- LEMBRANCINHAS -->
-<div id="pg-lembrancinhas" class="pg">
-  
-  <div class="s-hero"><p class="eyebrow">✦ Em breve ✦</p><h2 class="s-title">Lembrancinhas</h2><p class="s-body">Uma coleção especial sendo preparada!</p></div>
-  <div style="padding:28px 14px;max-width:600px;margin:0 auto"><div class="cs"><div class="cs-i">🎀</div><h3>Lembrancinhas</h3><p>Em breve! Siga nossas redes sociais.</p></div></div>
-</div>
-
-<!-- PERSONALIZADOS -->
-<div id="pg-personalizados" class="pg">
-  
-  <div class="s-hero">
-    <p class="eyebrow">✦ Personalizados ✦</p>
-    <h2 class="s-title">Personalizados</h2>
-    <p class="s-body">Escolha a categoria e personalize do seu jeito! ✨</p>
-  </div>
-
-  <!-- Grid principal de categorias -->
-  <div id="pers-grid" style="padding:16px 14px;max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px">
-
-    <div class="pcard" style="cursor:default">
-      <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--rose-p),var(--teal-p));display:flex;align-items:center;justify-content:center;font-size:36px">🪪</div>
-      <div style="padding:10px 12px">
-        <div style="font-size:12px;font-weight:700;margin-bottom:4px">Crachás</div>
-        <div style="font-size:10px;color:var(--soft)">Em breve ✨</div>
-      </div>
-    </div>
-
-    <div class="pcard" style="cursor:default">
-      <div style="aspect-ratio:1;background:linear-gradient(135deg,var(--rose-p),var(--teal-p));display:flex;align-items:center;justify-content:center;font-size:36px">🏷️</div>
-      <div style="padding:10px 12px">
-        <div style="font-size:12px;font-weight:700;margin-bottom:4px">Adesivos</div>
-        <div style="font-size:10px;color:var(--soft)">Em breve ✨</div>
-      </div>
-    </div>
-
-    <div class="pcard" onclick="openFotos()" style="cursor:pointer">
-      <div style="aspect-ratio:1;background:linear-gradient(135deg,#fce4e1,#e8f4f4);display:flex;align-items:center;justify-content:center;font-size:36px">🖼️</div>
-      <div style="padding:10px 12px">
-        <div style="font-size:12px;font-weight:700;margin-bottom:4px">Fotos</div>
-        <div style="font-size:10px;color:var(--rose);font-weight:600">Ver modelos →</div>
-      </div>
-    </div>
-
-    <div class="pcard" onclick="openEspelhinhos()" style="cursor:pointer">
-      <div style="aspect-ratio:1;background:linear-gradient(135deg,#fce4e1,#e8f4f4);display:flex;align-items:center;justify-content:center;font-size:36px">🪞</div>
-      <div style="padding:10px 12px">
-        <div style="font-size:12px;font-weight:700;margin-bottom:4px">Espelhinhos</div>
-        <div style="font-size:10px;color:var(--rose);font-weight:600">Ver modelos →</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Subcategorias de Espelhinhos (oculto por padrão) -->
-  <div id="esp-sub" style="display:none">
-    <div style="padding:0 14px;max-width:900px;margin:0 auto">
-      <button class="back-btn" onclick="closeEspelhinhos()" style="margin-top:10px">← Voltar</button>
-      <h3 style="font-family:'Playfair Display',serif;font-size:18px;text-align:center;margin:14px 0 4px;color:var(--rose)">🪞 Espelhinhos de Bolso/Bolsa</h3>
-      <p style="text-align:center;font-size:12px;color:var(--soft);margin-bottom:8px">Tamanho 6x9 · Normal R$15 · Holográfico R$20</p>
-    </div>
-
-    <!-- Filtros espelhinhos -->
-    <div class="cat-bar" id="esp-cat-bar">
-      <button class="cat-btn act" onclick="filterEsp('floral', event)">🦋 Floral/Romântico</button>
-      <button class="cat-btn" onclick="filterEsp('motivacional', event)">💪 Motivacionais</button>
-      <button class="cat-btn" onclick="filterEsp('animais', event)">🐾 Animais Fofos</button>
-      <button class="cat-btn" onclick="filterEsp('tematicos', event)">🎀 Temáticos</button>
-      <button class="cat-btn" onclick="filterEsp('personalizado', event)">✨ Personalizado</button>
-    </div>
-
-    <div class="esp-section">
-      <div class="esp-grid" id="esp-prod-grid">
-
-        <div class="esp-card" data-cat="floral" onclick="openEspModal('borboleta','Borboleta Florida')">
-          <img src="https://imaginae-papelaria-criativa.vercel.app/esp-borboleta.png" alt="Borboleta" loading="lazy">
-          <div class="esp-card-info">
-            <div class="esp-card-name">Borboleta Florida</div>
-            <div class="esp-card-price">Normal R$15 · Holográfico R$20</div>
-          </div>
-        </div>
-
-        <div class="esp-card" data-cat="motivacional" onclick="openEspModal('sucesso','Sucesso')">
-          <img src="https://imaginae-papelaria-criativa.vercel.app/esp-sucesso.png" alt="Sucesso" loading="lazy">
-          <div class="esp-card-info">
-            <div class="esp-card-name">Sucesso</div>
-            <div class="esp-card-price">Normal R$15 · Holográfico R$20</div>
-          </div>
-        </div>
-
-        <div class="esp-card" data-cat="animais" onclick="openEspModal('capivara','Capivara Fofa')">
-          <img src="https://imaginae-papelaria-criativa.vercel.app/esp-capivara.png" alt="Capivara" loading="lazy">
-          <div class="esp-card-info">
-            <div class="esp-card-name">Capivara Fofa</div>
-            <div class="esp-card-price">Normal R$15 · Holográfico R$20</div>
-          </div>
-        </div>
-
-        <div class="esp-card" data-cat="animais" onclick="openEspModal('fantasia','Mundo Fantasia')">
-          <img src="https://imaginae-papelaria-criativa.vercel.app/esp-fantasia.png" alt="Mundo Fantasia" loading="lazy">
-          <div class="esp-card-info">
-            <div class="esp-card-name">Mundo Fantasia</div>
-            <div class="esp-card-price">Normal R$15 · Holográfico R$20</div>
-          </div>
-        </div>
-
-        <div class="esp-card" data-cat="tematicos" onclick="openEspModal('hellokitty','Hello Kitty')">
-          <img src="https://imaginae-papelaria-criativa.vercel.app/esp-hellokitty.png" alt="Hello Kitty" loading="lazy">
-          <div class="esp-card-info">
-            <div class="esp-card-name">Hello Kitty</div>
-            <div class="esp-card-price">Normal R$15 · Holográfico R$20</div>
-          </div>
-        </div>
-
-        <div class="esp-card" data-cat="personalizado" onclick="openEspModal('personalizado','Personalizado')">
-          <img src="https://imaginae-papelaria-criativa.vercel.app/esp-personalizado.png" alt="Personalizado" loading="lazy">
-          <div class="esp-card-info">
-            <div class="esp-card-name">Sua Arte Aqui! (+R$2,00)</div>
-            <div class="esp-card-price">Normal R$17 · Holográfico R$22</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Form espelhinhos -->
-    <div class="mp-form" id="esp-form-section" style="display:none;margin:0 14px 20px;max-width:870px;margin-left:auto;margin-right:auto">
-      <h3 id="esp-form-title">🪞 Adicionar ao Carrinho</h3>
-      <div class="fr">
-        <label>Modelo</label>
-        <select id="esp-modelo" onchange="espCalc()">
-          <option value="borboleta">Borboleta Florida</option>
-          <option value="sucesso">Sucesso — Frase Motivacional</option>
-          <option value="capivara">Capivara Fofa</option>
-          <option value="fantasia">Mundo Fantasia</option>
-          <option value="hellokitty">Hello Kitty</option>
-          <option value="personalizado">Personalizado — Sua Arte (+R$2,00)</option>
-        </select>
-      </div>
-      <div class="fr">
-        <label>Tipo</label>
-        <select id="esp-tipo" onchange="espCalc()">
-          <option value="normal">Normal (vinil adesivo) — R$15,00</option>
-          <option value="holo">Holográfico — R$20,00</option>
-        </select>
-      </div>
-      <div class="fgrid">
-        <div class="fr">
-          <label>Quantidade (mín. 1)</label>
-          <input type="number" id="esp-qtd" value="1" min="1" oninput="espCalc()">
-        </div>
-        <div class="fr">
-          <label>Subtotal</label>
-          <div class="pprev"><strong id="esp-preco">R$15,00</strong></div>
-        </div>
-      </div>
-      <div class="fr" id="esp-obs-wrap" style="display:none">
-        <label>Observações / Sua Arte</label>
-        <textarea id="esp-obs" placeholder="Descreva sua ideia ou envie referência pelo WhatsApp após o pedido..."></textarea>
-      </div>
-      <button class="btn-add" onclick="espAddCart()">🛒 Adicionar ao Carrinho</button>
+    <div class="pedido-list" id="pedidoList">
+      <div class="empty-state"><div class="ic">⏳</div>Carregando pedidos...</div>
     </div>
   </div>
 
-
-  <!-- Subcategoria Fotos -->
-  <div id="fotos-sub" style="display:none">
-    <div style="padding:0 14px;max-width:900px;margin:0 auto">
-      <button class="back-btn" onclick="closeFotos()" style="margin-top:10px">← Voltar</button>
-      <h3 style="font-family:'Playfair Display',serif;font-size:18px;text-align:center;margin:14px 0 4px;color:var(--rose)">🖼️ Fotos Personalizadas</h3>
-      <p style="text-align:center;font-size:12px;color:var(--soft);margin-bottom:8px">Laminado +R$1,00 · Holográfico +R$1,00 (por foto)</p>
+  <!-- EQUIPE -->
+  <div class="view" id="view-equipe">
+    <div class="sheet-label">Quem tem acesso a este painel</div>
+    <div class="admin-list" id="adminList"></div>
+    <div class="add-admin-form">
+      <input type="text" id="novoAdminUid" placeholder="UID do Firebase Auth da pessoa">
+      <button id="btnAddAdmin">Adicionar</button>
     </div>
-
-    <!-- Filtros fotos -->
-    <div class="cat-bar" id="fotos-cat-bar">
-      <button class="cat-btn act" onclick="filterFotos('normais', event)">📸 Fotos Normais</button>
-      <button class="cat-btn" onclick="filterFotos('polaroid', event)">🎞️ Polaroid</button>
-      <button class="cat-btn" onclick="filterFotos('especiais', event)">✨ Especiais</button>
-    </div>
-
-    <!-- FOTOS NORMAIS -->
-    <div id="fotos-normais-content" class="esp-section">
-      <div style="padding:0 14px;max-width:900px;margin:0 auto 16px">
-        <img src="https://imaginae-papelaria-criativa.vercel.app/foto-normal-tamanhos.png" alt="Tamanhos fotos normais" style="width:100%;max-width:500px;display:block;margin:0 auto;border-radius:12px;box-shadow:0 4px 16px rgba(196,115,106,.15)" loading="lazy">
-      </div>
-
-      <div style="text-align:center;padding:20px 14px">
-        <button class="btn-add" onclick="openFnModal()" style="max-width:280px">📸 Personalizar e Adicionar</button>
-      </div>
-    </div>
-
-    <!-- FOTOS POLAROID -->
-    <div id="fotos-polaroid-content" class="esp-section" style="display:none">
-      <div style="padding:0 14px;max-width:900px;margin:0 auto 16px">
-        <img src="https://imaginae-papelaria-criativa.vercel.app/foto-tamanhos.png" alt="Tamanhos polaroid" style="width:100%;max-width:500px;display:block;margin:0 auto;border-radius:12px;box-shadow:0 4px 16px rgba(196,115,106,.15)" loading="lazy">
-      </div>
-
-      <div class="esp-section-title">📷 Mini (5x7,5cm)</div>
-      <div class="esp-grid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))">
-        <div class="pol-card" onclick="openPolGroupModal('mini')">
-          <div class="pol-card-body"><div class="pol-card-name">Mini</div><div class="pol-card-desc">A partir de 1 foto</div><div class="pol-card-price">A partir de R$3,00</div></div>
-        </div>
-      </div>
-
-      <div class="esp-section-title">📷 Médio (7x10cm)</div>
-      <div class="esp-grid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))">
-        <div class="pol-card" onclick="openPolGroupModal('medio')">
-          <div class="pol-card-body"><div class="pol-card-name">Médio</div><div class="pol-card-desc">A partir de 1 foto</div><div class="pol-card-price">A partir de R$3,50</div></div>
-        </div>
-      </div>
-
-      <div class="esp-section-title">📷 Clássico (8x10cm)</div>
-      <div class="esp-grid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))">
-        <div class="pol-card" onclick="openPolGroupModal('classico')">
-          <div class="pol-card-body"><div class="pol-card-name">Clássico</div><div class="pol-card-desc">A partir de 1 foto</div><div class="pol-card-price">A partir de R$4,00</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div id="fotos-especiais-content" class="esp-section" style="display:none">
-      <div class="esp-section-title">✨ Especiais</div>
-      <div class="esp-grid">
-        <div class="esp-card" onclick="openPolModal('qrcode')">
-          <img src="https://imaginae-papelaria-criativa.vercel.app/foto-qrcode.png" alt="Edição Especial QR Code" loading="lazy">
-          <div class="esp-card-info">
-            <div class="esp-card-name">Edição Especial QR Code</div>
-            <div class="esp-card-price">1 foto + QR (música/vídeo) — R$14,90</div>
-          </div>
-        </div>
-        <div class="esp-card" onclick="openPolModal('kit_viagem')">
-          <img src="https://imaginae-papelaria-criativa.vercel.app/foto-kit-viagem.png" alt="Kit Nossa Viagem" loading="lazy">
-          <div class="esp-card-info">
-            <div class="esp-card-name">Pacote "Nossa Viagem"</div>
-            <div class="esp-card-price">20 polaroids 5x7,5cm — R$29,90</div>
-          </div>
-        </div>
-        <div class="esp-card" onclick="openPolModal('kit_envelope')">
-          <img src="https://imaginae-papelaria-criativa.vercel.app/foto-pacote-presente.png" alt="Pacote Presente — Para Você, Meu Amor" loading="lazy">
-          <div class="esp-card-info">
-            <div class="esp-card-name">Pacote Presente "Para Você, Meu Amor"</div>
-            <div class="esp-card-price">20 polaroids 5x7,5cm — R$29,90</div>
-          </div>
-        </div>
-        <div class="esp-card" onclick="openPolModal('kit_amigos')">
-          <img src="https://imaginae-papelaria-criativa.vercel.app/foto-momentos-amigos.png" alt="Pacote Nossos Momentos Amigos" loading="lazy">
-          <div class="esp-card-info">
-            <div class="esp-card-name">Pacote "Nossos Momentos Amigos"</div>
-            <div class="esp-card-price">20 polaroids 5x7,5cm — R$29,90</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-        </div>
-</div>
-
-
-  </div>
-</div><!-- /pages-wrapper -->
-
-<button class="cfab" id="cfab" onclick="openCart()">🛒<span class="cfab-badge" id="fabN" style="display:none">0</span></button>
-
-<!-- FOOTER -->
-<footer class="foot">
-  <div class="flogo-wrap"><img class="flogo" src="https://res.cloudinary.com/jrmiaduy/image/upload/v1785117441/gclzj4bbnflaxvhcimta.png" alt=""><span class="fbrand">IMAGINAE Papelaria Criativa</span></div>
-  <div class="socrow">
-    <a class="socl" href="https://instagram.com/imaginae.papelaria" target="_blank"><span class="soci ig"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></span>@imaginae.papelaria</a>
-    <a class="socl" href="https://tiktok.com/@imaginae.papelaria" target="_blank"><span class="soci tt"><svg viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.73a8.27 8.27 0 004.84 1.55V6.82a4.85 4.85 0 01-1.07-.13z"/></svg></span>@imaginae.papelaria</a>
-    <a class="socl" href="https://youtube.com/@imaginae.papelaria" target="_blank"><span class="soci yt"><svg viewBox="0 0 24 24" fill="white"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></span>@imaginae.papelaria</a>
-      <a class="socl" href="https://br.shp.ee/xayohpvv" target="_blank"><span class="soci sp"><svg viewBox="0 0 24 24" fill="white"><path d="M12 1a5 5 0 00-5 5H5a1 1 0 00-1 1l-1 14a1 1 0 001 1h16a1 1 0 001-1L20 7a1 1 0 00-1-1h-2a5 5 0 00-5-5zm0 2a3 3 0 013 3H9a3 3 0 013-3zm-4 8a1 1 0 112 0 2 2 0 004 0 1 1 0 112 0 4 4 0 01-8 0z"/></svg></span>Shopee</a>
-  </div>
-  <p class="fcopy">© 2026 Imaginae Papelaria Criativa — Você imagina e a gente cria</p>
-</footer>
-
-<script>
-const PR={normal:{32:3,44:5,58:7},ima:{32:4,44:6,58:8},holo:{32:5,44:7,58:9},holoima:{32:6,44:8,58:10}};
-const MN={"m01":"Modelo 1","m02":"Modelo 2","m03":"Modelo 3","m04":"Modelo 4","m05":"Modelo 5","m06":"Modelo 6","m07":"Modelo 7","m08":"Modelo 8","m09":"Modelo 9","m10":"Modelo 10","m11":"Modelo 11","m12":"Modelo 12","m13":"Modelo 13","m14":"Modelo 14","m15":"Modelo 15","m16":"Modelo 16","m17":"Modelo 17","m18":"Modelo 18","m19":"Modelo 19","m20":"Modelo 20","m21":"Modelo 21","m22":"Modelo 22","m23":"Modelo 23","m24":"Modelo 24","m25":"Modelo 25","m26":"Modelo 26","m27":"Modelo 27","m28":"Modelo 28","m29":"Modelo 29"};
-const MI={"m01":"https://res.cloudinary.com/jrmiaduy/image/upload/v1785117432/bk4li4h1ahaapzyfaldf.jpg","m02":"https://i.imgur.com/v3b8TNv.jpeg","m03":"https://i.imgur.com/vQsngxr.jpeg","m04":"https://i.imgur.com/dA7tyRn.jpeg","m05":"https://i.imgur.com/4EtpkyW.jpeg","m06":"https://i.imgur.com/B7KHPQV.jpeg","m07":"https://i.imgur.com/Ru0tuow.jpeg","m08":"https://i.imgur.com/5GJVi5x.jpeg","m09":"https://i.imgur.com/o9xdRoj.jpeg","m10":"https://i.imgur.com/qlsG6Am.jpeg","m11":"https://i.imgur.com/67R4Sk6.jpeg","m12":"https://imaginae-papelaria-criativa.vercel.app/botton-m28.jpg","m13":"https://imaginae-papelaria-criativa.vercel.app/botton-m29.jpg","m14":"https://imaginae-papelaria-criativa.vercel.app/botton-m31.jpg","m15":"https://imaginae-papelaria-criativa.vercel.app/botton-m32.jpg","m16":"https://imaginae-papelaria-criativa.vercel.app/botton-m33.jpg","m17":"https://imaginae-papelaria-criativa.vercel.app/botton-m34.jpg","m18":"https://imaginae-papelaria-criativa.vercel.app/botton-m35.jpg","m19":"https://imaginae-papelaria-criativa.vercel.app/botton-m36.jpg","m20":"https://imaginae-papelaria-criativa.vercel.app/botton-m37.jpg","m21":"https://imaginae-papelaria-criativa.vercel.app/botton-m38.jpg","m22":"https://imaginae-papelaria-criativa.vercel.app/botton-m39.jpg","m23":"https://imaginae-papelaria-criativa.vercel.app/botton-m40.jpg","m24":"https://imaginae-papelaria-criativa.vercel.app/botton-m41.jpg","m25":"https://imaginae-papelaria-criativa.vercel.app/botton-m42.jpg","m26":"https://imaginae-papelaria-criativa.vercel.app/botton-m43.jpg","m27":"https://imaginae-papelaria-criativa.vercel.app/botton-m44.jpg","m28":"https://imaginae-papelaria-criativa.vercel.app/botton-m45.jpg","m29":"https://imaginae-papelaria-criativa.vercel.app/botton-m47.jpg"};
-let cart=[];try{cart=JSON.parse(localStorage.getItem('imaginae_cart')||'[]');}catch(e){cart=[];}
-let upFiles=[];
-const fmt=v=>'R$ '+v.toFixed(2).replace('.',',');
-
-var currentPg = 'home';
-function showPg(s){
-  var isHome = s === 'home';
-  currentPg = s;
-  var titles = {bottons:'Bottons',marcapaginas:'Marca-Páginas',lembrancinhas:'Lembrancinhas',personalizados:'Personalizados'};
-
-  // Mostrar/esconder páginas
-  document.querySelectorAll('.pg').forEach(e=>e.classList.remove('act'));
-  document.getElementById('pg-'+s).classList.add('act');
-
-  // Elementos da home
-  var els = ['.hdr','.foot','.cbar-wrap','.live-widget','#pages-wrapper'];
-  els.forEach(function(sel){
-    var el = document.querySelector(sel);
-    if(el) el.style.display = isHome ? '' : 'none';
-  });
-
-  // Mostrar só a página ativa quando não é home
-  if(!isHome){
-    var pg = document.getElementById('pg-'+s);
-    if(pg){
-      pg.style.display = 'block';
-      pg.style.position = 'fixed';
-      pg.style.top = '0';
-      pg.style.left = '0';
-      pg.style.right = '0';
-      pg.style.bottom = '0';
-      pg.style.zIndex = '500';
-      pg.style.overflowY = 'auto';
-      pg.style.background = '#fff8f5';
-      pg.style.paddingTop = '60px';
-    }
-    // Sub-header
-    var subHeader = document.getElementById('sub-header');
-    var subTitle = document.getElementById('sub-header-title');
-    if(subHeader) subHeader.classList.add('vis');
-    if(subTitle && titles[s]) subTitle.textContent = titles[s];
-    // Mostrar fab se houver itens
-    var fb=document.getElementById('cfab');
-    if(fb) fb.classList.toggle('vis', cart.length > 0);
-  } else {
-    // Voltar home: resetar estilos de todas as pg
-    document.querySelectorAll('.pg').forEach(function(pg){
-      pg.style.position = '';
-      pg.style.top = '';
-      pg.style.left = '';
-      pg.style.right = '';
-      pg.style.bottom = '';
-      pg.style.zIndex = '';
-      pg.style.overflowY = '';
-      pg.style.background = '';
-      pg.style.paddingTop = '';
-      pg.style.display = '';
-    });
-    var subHeader = document.getElementById('sub-header');
-    if(subHeader) subHeader.classList.remove('vis');
-    // Esconder fab na home
-    var fb=document.getElementById('cfab');
-    if(fb) fb.classList.remove('vis');
-    // Restaurar pages-wrapper
-    var pw = document.querySelector('#pages-wrapper');
-    if(pw) pw.style.display = '';
-  }
-  window.scrollTo(0, 0);
-}
-function showSub(s,btn){
-  document.querySelectorAll('.scon').forEach(e=>e.classList.remove('act'));
-  document.getElementById('sub-'+s).classList.add('act');
-  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('act'));
-  btn.classList.add('act');
-}
-function openCart(){document.getElementById('co').classList.add('open');document.getElementById('cdraw').classList.add('open');}
-function closeCart(){document.getElementById('co').classList.remove('open');document.getElementById('cdraw').classList.remove('open');}
-
-function cCg(){const t=document.getElementById('cg-t').value,s=document.getElementById('cg-s').value,q=+document.getElementById('cg-q').value||2;document.getElementById('cg-p').textContent=fmt(PR[t][s]*q);}
-function cP1(){const t=document.getElementById('p1-t').value,s=document.getElementById('p1-s').value,q=+document.getElementById('p1-q').value||2,n=+document.getElementById('p1-nf').value||1;document.getElementById('p1-p').textContent=fmt(PR[t][s]*q*n);}
-function cP2(){const t=document.getElementById('p2-t').value,s=document.getElementById('p2-s').value,q=+document.getElementById('p2-q').value||2;document.getElementById('p2-p').textContent=fmt((PR[t][s]+2)*q);}
-
-function prevPhotos(inp){
-  upFiles=Array.from(inp.files);
-  const pv=document.getElementById('uprev');pv.innerHTML='';
-  upFiles.forEach(f=>{const u=URL.createObjectURL(f);const i=document.createElement('img');i.src=u;i.className='uthumb';pv.appendChild(i);});
-  document.getElementById('p1-nf').value=upFiles.length||1;cP1();
-}
-
-const TL={normal:'Normal (Alfinete)',ima:'Com Ímã',holo:'Holográfico',holoima:'Holográfico + Ímã'};
-function addCg(){
-  const mid=document.getElementById('cg-m').value,t=document.getElementById('cg-t').value,s=document.getElementById('cg-s').value,q=+document.getElementById('cg-q').value||2;
-  cart.push({id:Date.now(),tp:'cong',mid,mn:MN[mid],tl:TL[t],s,q,u:PR[t][s],tot:PR[t][s]*q,img:MI[mid]});
-  rCart();toast('✅ Adicionado!');
-}
-function addFoto(){
-  const t=document.getElementById('p1-t').value,s=document.getElementById('p1-s').value,q=+document.getElementById('p1-q').value||2,n=+document.getElementById('p1-nf').value||1;
-  cart.push({id:Date.now(),tp:'foto',mn:'Personalizado — Foto própria',tl:TL[t],s,q:q*n,u:PR[t][s],tot:PR[t][s]*q*n,img:null});
-  rCart();toast('✅ Adicionado! Envie as fotos pelo WhatsApp.');
-}
-function addArte(){
-  const t=document.getElementById('p2-t').value,s=document.getElementById('p2-s').value,q=+document.getElementById('p2-q').value||2,obs=document.getElementById('p2-obs').value.trim();
-  if(!obs){alert('Descreva como quer a arte!');return;}
-  const u=PR[t][s]+2;
-  cart.push({id:Date.now(),tp:'arte',mn:'Personalizado — Criação de Arte',tl:TL[t],s,q,u,tot:u*q,img:null,obs});
-  rCart();toast('✅ Arte adicionada!');
-}
-function rmItem(id){cart=cart.filter(i=>i.id!==id);rCart();}
-function clearCart(){if(confirm('Limpar carrinho?')){cart=[];rCart();}}
-
-function rCart(){
-  saveCart();
-  const em=document.getElementById('cempty'),li=document.getElementById('citems'),ft=document.getElementById('cfoot'),fb=document.getElementById('cfab'),cn=document.getElementById('cartCount');
-  if(!cart.length){em.style.display='block';li.innerHTML='';ft.style.display='none';fb.classList.remove('vis');cn.textContent='0';var fbN=document.getElementById('fabN');if(fbN)fbN.style.display='none';return;}
-  em.style.display='none';ft.style.display='block';if(currentPg!=='home')fb.classList.add('vis');
-  const tot=cart.reduce((s,i)=>s+i.tot,0),tq=cart.reduce((s,i)=>s+i.q,0);
-  document.getElementById('ctval').textContent=fmt(tot);
-  cn.textContent=tq;
-  var fabN=document.getElementById('fabN');
-  if(fabN){fabN.textContent=tq;fabN.style.display=tq>0?'flex':'none';}
-  var fabT=document.getElementById('fabT');
-  if(fabT) fabT.textContent=tot.toFixed(2).replace('.',',');
-  li.innerHTML=cart.map(i=>`<div class="ci"><div class="ci-img">${i.img?`<img src="${i.img}" alt="">`:i.tp==='esp'?'🪞':i.tp==='mp'?'🔖':'🎨'}</div><div class="ci-info"><div class="ci-name">${i.mn}</div><div class="ci-det">${i.tl} · ${i.s.includes && i.s.includes("cm") ? i.s : i.s+"mm"} · ${i.q}x ${fmt(i.u)}${i.obs?'<br><em>'+i.obs.substring(0,35)+'...</em>':''}</div></div><span class="ci-price">${fmt(i.tot)}</span><button class="ci-rm" onclick="rmItem(${i.id})">×</button></div>`).join('');
-}
-
-function sendWA(){
-  if(!cart.length)return;
-  abrirModalCliente();
-}
-
-function abrirModalCliente(){
-  const overlay=document.getElementById('cliente-overlay');
-  overlay.style.display='flex';
-  document.getElementById('cliente-error').style.display='none';
-  document.getElementById('cli-nome').value='';
-  document.getElementById('cli-sobrenome').value='';
-  document.getElementById('cli-telefone').value='';
-  setTimeout(()=>document.getElementById('cli-nome').focus(),100);
-}
-
-function fecharModalCliente(){
-  document.getElementById('cliente-overlay').style.display='none';
-}
-
-function mostrarErroModal(msg){
-  const el=document.getElementById('cliente-error');
-  el.textContent=msg;
-  el.style.display='block';
-}
-
-async function confirmarPedido(){
-  const nome=document.getElementById('cli-nome').value.trim();
-  const sobrenome=document.getElementById('cli-sobrenome').value.trim();
-  const telefone=document.getElementById('cli-telefone').value.trim().replace(/\D/g,'');
-  const btn=document.getElementById('cli-btn-enviar');
-
-  if(!nome){mostrarErroModal('Por favor preencha seu nome.');return;}
-  if(!sobrenome){mostrarErroModal('Por favor preencha seu sobrenome.');return;}
-  if(!telefone||telefone.length<10){mostrarErroModal('Por favor preencha um WhatsApp válido com DDD.');return;}
-
-  btn.disabled=true;
-  btn.textContent='Salvando pedido... ⏳';
-
-  const nomeCompleto=nome+' '+sobrenome;
-  const tot = cart.reduce((s,i)=>s+i.tot,0);
-  let codigo;
-  let salvouNoBanco = true;
-
-  try{
-    // Tenta salvar no Firestore (registro para o painel de gestão).
-    const resultado = await window._fbSalvarPedido(nomeCompleto,telefone,cart);
-    codigo = resultado.codigo;
-  }catch(e){
-    // Falha ao salvar (rede instável, etc.): NÃO trava o cliente.
-    // O pedido é o que importa — segue para o WhatsApp com um código
-    // gerado localmente, e o pedido pode ser registrado manualmente depois.
-    console.error('Falha ao salvar pedido no Firestore, seguindo com fallback local:', e);
-    codigo = `IMG-${Date.now().toString(36).toUpperCase()}`;
-    salvouNoBanco = false;
-  }
-
-  const catMap={cong:'📌 Botton',foto:'📌 Botton (foto própria)',arte:'📌 Botton (personalizado)',mp:'🔖 Marca-Página',esp:'🪞 Espelhinho',fn:'📸 Foto Normal',pol:'🎞️ Foto Polaroid'};
-  let msg=`🛒 *Olá! Quero fazer um pedido na Imaginae:*\n`;
-  msg+=`📋 *Pedido: ${codigo}*\n`;
-  msg+=`👤 *${nomeCompleto}*\n\n`;
-  cart.forEach((i,x)=>{
-    const cat=catMap[i.tp]||'🛍️ Produto';
-    msg+=`${x+1}. [${cat}] ${i.mn}\n   ${i.tl} · ${i.s.includes && i.s.includes("cm") ? i.s : i.s+"mm"} · ${i.q}x ${fmt(i.u)} = ${fmt(i.tot)}`;
-    if(i.obs)msg+=`\n   📝 ${i.obs}`;
-    if(i.tp==='foto')msg+=`\n   📸 Vou enviar as fotos em seguida`;
-    msg+='\n\n';
-  });
-  msg+=`💰 *Total: ${fmt(tot)}*\n\n`;
-  msg+= salvouNoBanco
-    ? `✅ Pedido registrado com o código *${codigo}*.\nAguardo confirmação! 😊`
-    : `📋 Código do pedido: *${codigo}*.\nAguardo confirmação! 😊`;
-
-  fecharModalCliente();
-  cart=[];
-  rCart();
-  clearSavedCart();
-  window.open('https://wa.me/5511981793021?text='+encodeURIComponent(msg),'_blank');
-
-  btn.disabled=false;
-  btn.textContent='Registrar e enviar no WhatsApp 🚀';
-}
-
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
-function tfaq(el){const a=el.nextElementSibling,o=a.classList.contains('open');document.querySelectorAll('.fa').forEach(x=>x.classList.remove('open'));document.querySelectorAll('.fq').forEach(x=>x.classList.remove('open'));if(!o){a.classList.add('open');el.classList.add('open');}}
-
-// Contador removido - use dados reais
-cCg();cP1();cP2();
-
-// ===== MODAL PRODUTO =====
-let pdCurrentMid = 'm01';
-let pdCurrentQty = 1;
-
-function openPdModal(mid, name, imgSrc) {
-  pdCurrentMid = mid;
-  pdCurrentQty = 1;
-  document.getElementById('pdImg').src = imgSrc;
-  document.getElementById('pdTitle').textContent = name;
-  document.getElementById('pdLabel').textContent = 'Botton — ' + name;
-  document.getElementById('pdQty').textContent = pdCurrentQty;
-  // sync model select on existing form
-  var sel = document.getElementById('cg-m');
-  if (sel) { sel.value = mid; }
-  pdCalc();
-  var overlay = document.getElementById('pdOverlay');
-  overlay.classList.add('open');
-  var scrollY = window.scrollY;
-  document.body.style.position = 'fixed';
-  document.body.style.top = '-' + scrollY + 'px';
-  document.body.style.width = '100%';
-  document.body.dataset.scrollY = scrollY;
-}
-
-function closePdModal(e) {
-  if (e && e.target !== document.getElementById('pdOverlay')) return;
-  document.getElementById('pdOverlay').classList.remove('open');
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.width = '';
-  window.scrollTo(0, 0);
-}
-
-function pdQtyChange(delta) {
-  pdCurrentQty = Math.max(1, pdCurrentQty + delta);
-  document.getElementById('pdQty').textContent = pdCurrentQty;
-  pdCalc();
-}
-
-function pdCalc() {
-  var t = document.getElementById('pd-t').value;
-  var s = document.getElementById('pd-s').value;
-  var total = PR[t][s] * pdCurrentQty;
-  document.getElementById('pd-price').textContent = fmt(total);
-}
-
-function pdAddCart() {
-  var t = document.getElementById('pd-t').value;
-  var s = document.getElementById('pd-s').value;
-  var u = PR[t][s];
-  cart.push({id:Date.now(),tp:'cong',mid:pdCurrentMid,mn:MN[pdCurrentMid],tl:TL[t],s:s,q:pdCurrentQty,u:u,tot:u*pdCurrentQty,img:MI[pdCurrentMid]});
-  rCart();
-  toast('✅ ' + MN[pdCurrentMid] + ' adicionado!');
-  closePdModal();
-}
-
-
-// ===== MARCA-PÁGINAS =====
-const MP_PRECO = {normal: 4, laminado: 5, holo: 6, lamholo: 7};
-const MP_NOMES = {
-  mp1: 'Modelo 1 — 15 Textos de Consolo',
-  mp2: 'Modelo 2 — Leitura da Bíblia',
-  personalizado: 'Modelo Personalizado'
-};
-const MP_TIPOS = {normal: 'Normal', laminado: 'Laminado', holo: 'Holográfico', lamholo: 'Laminado + Holográfico'};
-
-function mpCalc(){
-  const tipo = document.getElementById('mp-tipo').value;
-  const qtd = +document.getElementById('mp-qtd').value || 1;
-  const modelo = document.getElementById('mp-modelo').value;
-  const extra = modelo === 'personalizado' ? 2 : 0;
-  const total = (MP_PRECO[tipo] + extra) * qtd;
-  document.getElementById('mp-preco').textContent = fmt(total);
-}
-
-function mpModeloChange(){
-  const modelo = document.getElementById('mp-modelo').value;
-  const obsWrap = document.getElementById('mp-obs-wrap');
-  const titulo = document.getElementById('mp-form-title');
-  if(modelo === 'personalizado'){
-    obsWrap.style.display = 'block';
-    titulo.textContent = '✨ Marca-Página Personalizado';
-  } else {
-    obsWrap.style.display = 'none';
-    titulo.textContent = '🔖 Adicionar ao Carrinho';
-  }
-  mpCalc();
-}
-
-function mpAddCart(){
-  const modelo = document.getElementById('mp-modelo').value;
-  const tipo = document.getElementById('mp-tipo').value;
-  const qtd = +document.getElementById('mp-qtd').value || 1;
-  const obs = document.getElementById('mp-obs').value.trim();
-  const extra = modelo === 'personalizado' ? 2 : 0;
-  const u = MP_PRECO[tipo] + extra;
-  if(modelo === 'personalizado' && !obs){
-    alert('Por favor descreva sua ideia para o marca-página personalizado!');
-    return;
-  }
-  cart.push({
-    id: Date.now(),
-    tp: 'mp',
-    mid: modelo,
-    mn: '🔖 ' + MP_NOMES[modelo],
-    tl: MP_TIPOS[tipo],
-    s: '-',
-    q: qtd,
-    u: u,
-    tot: u * qtd,
-    img: {"mp1":"https://imaginae-papelaria-criativa.vercel.app/mp-modelo1.png","mp2":"https://imaginae-papelaria-criativa.vercel.app/mp-modelo2.png","personalizado":null}[modelo] || null,
-    obs: obs || ''
-  });
-  rCart();
-  toast('✅ Marca-página adicionado!');
-}
-
-function openMpModal(id){
-  const sel = document.getElementById('mp-modelo');
-  if(sel){ sel.value = id; mpModeloChange(); }
-  const form = document.getElementById('mp-form-section');
-  if(form){ form.style.display = 'block'; }
-}
-
-// Widget visitantes ao vivo
-(function(){
-  var n = Math.floor(Math.random() * 15) + 18; // começa entre 18-32
-  var el = document.getElementById('liveNum');
-  if(!el) return;
-  el.textContent = n;
-  setInterval(function(){
-    var delta = Math.random() < 0.5 ? 1 : -1;
-    n = Math.max(12, Math.min(47, n + delta));
-    el.textContent = n;
-  }, Math.floor(Math.random() * 4000) + 3000); // muda a cada 3-7s
-})();
-
-
-// Contador de pedidos do dia — cresce com o horário
-(function(){
-  var el = document.getElementById('pedidosHoje');
-  if(!el) return;
-
-  function calcPedidos(){
-    var now = new Date();
-    var hora = now.getHours();
-    var min = now.getMinutes();
-    var totalMin = hora * 60 + min;
-
-    // Loja funciona das 8h às 22h (840 min de janela)
-    var inicio = 8 * 60;
-    var fim = 22 * 60;
-    if(totalMin < inicio) return 0;
-    var progresso = Math.min((totalMin - inicio) / (fim - inicio), 1);
-
-    // Base do dia — varia entre 8 e 15 dependendo do dia da semana
-    var diasemana = now.getDay(); // 0=dom, 6=sab
-    var base = (diasemana === 0 || diasemana === 6) ? 15 : 8;
-    var maximo = base + 12;
-
-    // Número cresce com o progresso do dia + leve aleatoriedade por minuto
-    var seed = now.getDate() + now.getMonth() * 31;
-    var variacao = (((seed * 9301 + 49297) % 233280) / 233280) * 4 | 0;
-    return Math.floor(progresso * maximo) + variacao;
-  }
-
-  function atualizar(){
-    var n = calcPedidos();
-    el.textContent = n;
-  }
-
-  atualizar();
-  // Atualiza a cada 4-8 minutos simulando novos pedidos
-  setInterval(atualizar, (Math.floor(Math.random() * 4) + 4) * 60 * 1000);
-  // Micro-animação: pisca suavemente ao atualizar
-  setInterval(function(){
-    if(Math.random() < 0.3){
-      el.style.opacity = '0.4';
-      setTimeout(function(){ el.style.opacity = '1'; }, 300);
-      setTimeout(atualizar, 150);
-    }
-  }, 30000);
-})();
-
-
-// ===== ESPELHINHOS =====
-const ESP_PRECO = {normal: 15, holo: 20};
-const ESP_NOMES = {
-  borboleta: 'Borboleta Florida',
-  sucesso: 'Sucesso — Frase Motivacional',
-  capivara: 'Capivara Fofa',
-  fantasia: 'Mundo Fantasia',
-  hellokitty: 'Hello Kitty',
-  personalizado: 'Espelhinho Personalizado'
-};
-
-function espCalc(){
-  const tipo = document.getElementById('esp-tipo').value;
-  const qtd = +document.getElementById('esp-qtd').value || 1;
-  const extra = espCurrentMid === 'personalizado' ? 2 : 0;
-  const total = (ESP_PRECO[tipo] + extra) * qtd;
-  document.getElementById('esp-preco').textContent = fmt(total);
-}
-
-const ESP_IMGS = {'borboleta': 'https://imaginae-papelaria-criativa.vercel.app/esp-borboleta.png', 'sucesso': 'https://imaginae-papelaria-criativa.vercel.app/esp-sucesso.png', 'capivara': 'https://imaginae-papelaria-criativa.vercel.app/esp-capivara.png', 'fantasia': 'https://imaginae-papelaria-criativa.vercel.app/esp-fantasia.png', 'hellokitty': 'https://imaginae-papelaria-criativa.vercel.app/esp-hellokitty.png', 'personalizado': 'https://imaginae-papelaria-criativa.vercel.app/esp-personalizado.png'};
-let espCurrentMid = 'borboleta';
-
-function openEspModal(id, nome){
-  espCurrentMid = id;
-  const imgs = {'borboleta': 'https://imaginae-papelaria-criativa.vercel.app/esp-borboleta.png', 'sucesso': 'https://imaginae-papelaria-criativa.vercel.app/esp-sucesso.png', 'capivara': 'https://imaginae-papelaria-criativa.vercel.app/esp-capivara.png', 'fantasia': 'https://imaginae-papelaria-criativa.vercel.app/esp-fantasia.png', 'hellokitty': 'https://imaginae-papelaria-criativa.vercel.app/esp-hellokitty.png', 'personalizado': 'https://imaginae-papelaria-criativa.vercel.app/esp-personalizado.png'};
-  document.getElementById('espImg').src = imgs[id] || '';
-  document.getElementById('espTitle').textContent = nome;
-  document.getElementById('espLabel').textContent = id === 'personalizado' ? '✨ Personalizado (+R$2,00)' : '🪞 ' + nome;
-  const obsWrap = document.getElementById('esp-obs-wrap');
-  obsWrap.style.display = id === 'personalizado' ? 'block' : 'none';
-  const sel = document.getElementById('esp-tipo2');
-  if(sel) sel.value = 'normal';
-  document.getElementById('esp-qtd2').value = 1;
-  espCalc();
-  const overlay = document.getElementById('espOverlay');
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeEspModal(e){
-  if(e && e.target !== document.getElementById('espOverlay')) return;
-  document.getElementById('espOverlay').classList.remove('open');
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.width = '';
-  window.scrollTo(0, 0);
-}
-
-function espAddCart(){
-  const tipo = document.getElementById('esp-tipo').value;
-  const qtd = +document.getElementById('esp-qtd').value || 1;
-  const obs = document.getElementById('esp-obs').value.trim();
-  const extra = espCurrentMid === 'personalizado' ? 2 : 0;
-  const u = ESP_PRECO[tipo] + extra;
-  if(espCurrentMid === 'personalizado' && !obs){
-    alert('Por favor descreva sua ideia para o espelhinho personalizado!');
-    return;
-  }
-  cart.push({
-    id: Date.now(),
-    tp: 'esp',
-    mid: espCurrentMid,
-    mn: '🪞 ' + ESP_NOMES[espCurrentMid],
-    tl: tipo === 'holo' ? 'Holográfico' : 'Normal',
-    s: '6x9cm',
-    q: qtd,
-    u: u,
-    tot: u * qtd,
-    img: {"borboleta":"https://imaginae-papelaria-criativa.vercel.app/esp-borboleta.png","sucesso":"https://imaginae-papelaria-criativa.vercel.app/esp-sucesso.png","capivara":"https://imaginae-papelaria-criativa.vercel.app/esp-capivara.png","fantasia":"https://imaginae-papelaria-criativa.vercel.app/esp-fantasia.png","hellokitty":"https://imaginae-papelaria-criativa.vercel.app/esp-hellokitty.png","personalizado":"https://imaginae-papelaria-criativa.vercel.app/esp-personalizado.png"}[espCurrentMid] || null,
-    obs: obs || ''
-  });
-  rCart();
-  closeEspModal();
-  toast('✅ Espelhinho adicionado!');
-}
-
-
-function openEspelhinhos(){
-  document.getElementById('pers-grid').style.display = 'none';
-  document.getElementById('esp-sub').style.display = 'block';
-  window.scrollTo({top:0,behavior:'instant'});
-}
-function closeEspelhinhos(){
-  document.getElementById('esp-sub').style.display = 'none';
-  document.getElementById('pers-grid').style.display = 'grid';
-  window.scrollTo({top:0,behavior:'instant'});
-}
-
-
-function espCalc2(){
-  const tipo = document.getElementById('esp-tipo2').value;
-  const qtd = +document.getElementById('esp-qtd2').value || 1;
-  const extra = espCurrentMid === 'personalizado' ? 2 : 0;
-  const base = tipo === 'holo' ? 20 : 15;
-  const total = (base + extra) * qtd;
-  document.getElementById('esp-preco2').textContent = fmt(total);
-}
-
-function espAddCart2(){
-  const tipo = document.getElementById('esp-tipo2').value;
-  const qtd = +document.getElementById('esp-qtd2').value || 1;
-  const obs = document.getElementById('esp-obs2').value.trim();
-  const extra = espCurrentMid === 'personalizado' ? 2 : 0;
-  const base = tipo === 'holo' ? 20 : 15;
-  const u = base + extra;
-  if(espCurrentMid === 'personalizado' && !obs){
-    document.getElementById('esp-obs-wrap2').style.display = 'block';
-    document.getElementById('esp-obs2').focus();
-    document.getElementById('esp-obs2').style.border = '2px solid var(--rose)';
-    return;
-  }
-  cart.push({
-    id: Date.now(),
-    tp: 'esp',
-    mid: espCurrentMid,
-    mn: '🪞 ' + (ESP_NOMES[espCurrentMid] || espCurrentMid),
-    tl: tipo === 'holo' ? 'Holográfico' : 'Normal',
-    s: '6x9cm',
-    q: qtd,
-    u: u,
-    tot: u * qtd,
-    img: {"borboleta":"https://imaginae-papelaria-criativa.vercel.app/esp-borboleta.png","sucesso":"https://imaginae-papelaria-criativa.vercel.app/esp-sucesso.png","capivara":"https://imaginae-papelaria-criativa.vercel.app/esp-capivara.png","fantasia":"https://imaginae-papelaria-criativa.vercel.app/esp-fantasia.png","hellokitty":"https://imaginae-papelaria-criativa.vercel.app/esp-hellokitty.png","personalizado":"https://imaginae-papelaria-criativa.vercel.app/esp-personalizado.png"}[espCurrentMid] || null,
-    obs: obs || ''
-  });
-  rCart();
-  closeEspModal();
-  toast('✅ Espelhinho adicionado!');
-}
-
-
-function filterMp(cat){
-  // Atualizar botões
-  document.querySelectorAll('#mp-cat-bar .cat-btn').forEach(b => b.classList.remove('act'));
-  event.currentTarget.classList.add('act');
-  // Filtrar cards
-  document.querySelectorAll('#mp-prod-grid .mp-card').forEach(card => {
-    card.style.display = card.dataset.cat === cat ? '' : 'none';
-  });
-  // Esconder form ao trocar categoria
-  const form = document.getElementById('mp-form-section');
-  if(form) form.style.display = 'none';
-}
-// Iniciar mostrando bíblicos
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('#mp-prod-grid .mp-card').forEach(card => {
-    if(card.dataset.cat !== 'biblicos') card.style.display = 'none';
-  });
-});
-
-
-function filterEsp(cat, e){
-  document.querySelectorAll('#esp-cat-bar .cat-btn').forEach(b => b.classList.remove('act'));
-  if(e && e.currentTarget) e.currentTarget.classList.add('act');
-  document.querySelectorAll('#esp-prod-grid .esp-card').forEach(card => {
-    card.style.display = card.dataset.cat === cat ? '' : 'none';
-  });
-}
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('#esp-prod-grid .esp-card').forEach(card => {
-    if(card.dataset.cat !== 'floral') card.style.display = 'none';
-  });
-});
-
-
-// Salvar e carregar carrinho no localStorage
-function saveCart(){
-  try { localStorage.setItem('imaginae_cart', JSON.stringify(cart)); } catch(e){}
-}
-function clearSavedCart(){
-  try { localStorage.removeItem('imaginae_cart'); } catch(e){}
-}
-
-
-// ===== FOTOS =====
-function openFotos(){
-  document.getElementById('pers-grid').style.display = 'none';
-  document.getElementById('fotos-sub').style.display = 'block';
-  window.scrollTo({top:0,behavior:'instant'});
-}
-function closeFotos(){
-  document.getElementById('fotos-sub').style.display = 'none';
-  document.getElementById('pers-grid').style.display = 'grid';
-  window.scrollTo({top:0,behavior:'instant'});
-}
-function filterFotos(cat, e){
-  document.querySelectorAll('#fotos-cat-bar .cat-btn').forEach(b => b.classList.remove('act'));
-  if(e && e.currentTarget) e.currentTarget.classList.add('act');
-  document.getElementById('fotos-normais-content').style.display = cat === 'normais' ? 'block' : 'none';
-  document.getElementById('fotos-polaroid-content').style.display = cat === 'polaroid' ? 'block' : 'none';
-  document.getElementById('fotos-especiais-content').style.display = cat === 'especiais' ? 'block' : 'none';
-}
-
-// Fotos Normais — modal estilo bottons
-const FN_PRECOS = {
-  '10x15': {5:14.90, 10:24.90, 20:39.90, 30:54.90, 50:79.90},
-  '13x18': {5:19.90, 10:34.90, 20:59.90, 30:84.90, 50:129.90},
-  '15x21': {5:27.90, 10:49.90, 20:89.90, 30:124.90, 50:189.90}
-};
-function openFnModal(){
-  document.getElementById('fn-tam').value = '10x15';
-  document.getElementById('fn-qtd').value = '5';
-  document.getElementById('fn-acab').value = 'normal';
-  fnCalc();
-  const overlay = document.getElementById('fnOverlay');
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeFnModal(e){
-  if(e && e.target !== document.getElementById('fnOverlay')) return;
-  document.getElementById('fnOverlay').classList.remove('open');
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.width = '';
-  window.scrollTo(0, 0);
-}
-function fnAcabExtra(acab, qtd){
-  if(acab === 'normal') return 0;
-  if(acab === 'lamholo') return qtd * 2.00;
-  return qtd * 1.00;
-}
-function fnAcabNome(acab){
-  if(acab === 'laminado') return 'Laminado';
-  if(acab === 'holo') return 'Holográfico';
-  if(acab === 'lamholo') return 'Laminado + Holográfico';
-  return 'Normal';
-}
-function fnCalc(){
-  const tam = document.getElementById('fn-tam').value;
-  const qtd = +document.getElementById('fn-qtd').value;
-  const acab = document.getElementById('fn-acab').value;
-  const base = FN_PRECOS[tam][qtd];
-  const extra = fnAcabExtra(acab, qtd);
-  const total = base + extra;
-  document.getElementById('fn-preco').textContent = fmt(total);
-}
-function fnAddCart(){
-  const tam = document.getElementById('fn-tam').value;
-  const qtd = +document.getElementById('fn-qtd').value;
-  const acab = document.getElementById('fn-acab').value;
-  const base = FN_PRECOS[tam][qtd];
-  const extra = fnAcabExtra(acab, qtd);
-  const total = base + extra;
-  const acabNome = fnAcabNome(acab);
-  cart.push({
-    id: Date.now(), tp: 'fn', mid: tam,
-    mn: '📸 Fotos Normais ' + tam + 'cm',
-    tl: acabNome, s: qtd+' un', q: 1, u: total, tot: total,
-    img: null, obs: ''
-  });
-  rCart();
-  closeFnModal();
-  toast('✅ Fotos adicionadas!');
-}
-
-// Fotos Polaroid/Especiais — modal estilo bottons
-const POL_NOMES = {
-  qrcode: 'Edição Especial QR Code', kit_viagem: 'Pacote "Nossa Viagem"',
-  kit_envelope: 'Pacote Presente "Para Você, Meu Amor"',
-  kit_amigos: 'Pacote "Nossos Momentos Amigos"'
-};
-const POL_PRECOS = {
-  qrcode: 14.90, kit_viagem: 29.90, kit_envelope: 29.90, kit_amigos: 29.90
-};
-const POL_NUMFOTOS = {
-  qrcode: 1, kit_viagem: 20, kit_envelope: 20, kit_amigos: 20
-};
-
-// Grupos com variação de quantidade (Mini, Médio, Clássico)
-const POL_GROUPS = {
-  mini: { nome: 'Mini (5x7,5cm)', opcoes: [
-    {fotos: 1, preco: 3.00, label: '1 foto'},
-    {fotos: 5, preco: 12.00, label: '5 fotos'},
-    {fotos: 10, preco: 20.00, label: '10 fotos'},
-    {fotos: 20, preco: 32.00, label: '20 fotos'}
-  ]},
-  medio: { nome: 'Médio (7x10cm)', opcoes: [
-    {fotos: 1, preco: 3.50, label: '1 foto'},
-    {fotos: 5, preco: 15.00, label: '5 fotos'},
-    {fotos: 10, preco: 25.00, label: '10 fotos'},
-    {fotos: 20, preco: 40.00, label: '20 fotos'}
-  ]},
-  classico: { nome: 'Clássico (8x10cm)', opcoes: [
-    {fotos: 1, preco: 4.00, label: '1 foto'},
-    {fotos: 5, preco: 18.00, label: '5 fotos'},
-    {fotos: 10, preco: 30.00, label: '10 fotos'},
-    {fotos: 20, preco: 48.00, label: '20 fotos'}
-  ]}
-};
-let polCurrentGroup = null;
-const POL_IMGS = {
-  qrcode: 'https://imaginae-papelaria-criativa.vercel.app/foto-qrcode.png',
-  kit_viagem: 'https://imaginae-papelaria-criativa.vercel.app/foto-kit-viagem.png',
-  kit_envelope: 'https://imaginae-papelaria-criativa.vercel.app/foto-pacote-presente.png',
-  kit_amigos: 'https://imaginae-papelaria-criativa.vercel.app/foto-momentos-amigos.png'
-};
-let polCurrentMid = 'mini_ind';
-let polQty = 1;
-
-function openPolModal(id){
-  polCurrentMid = id;
-  polCurrentGroup = null;
-  polQty = 1;
-  document.getElementById('polLabel').textContent = '🎞️ ' + POL_NOMES[id];
-  document.getElementById('polTitle').textContent = POL_NOMES[id];
-  document.getElementById('polTag').textContent = '✦ ' + POL_NUMFOTOS[id] + ' foto(s)';
-  document.getElementById('pol-acab').value = 'normal';
-  document.getElementById('polQty').textContent = polQty;
-
-  const imgWrap = document.getElementById('pol-img-wrap');
-  const qtyNoImg = document.getElementById('pol-qty-noimg');
-  const groupWrap = document.getElementById('pol-group-select-wrap');
-  groupWrap.style.display = 'none';
-
-  if(POL_IMGS[id]){
-    document.getElementById('polImg').src = POL_IMGS[id];
-    imgWrap.style.display = 'block';
-    qtyNoImg.style.display = 'none';
-  } else {
-    imgWrap.style.display = 'none';
-    qtyNoImg.style.display = 'block';
-    document.getElementById('pol-qtd-input').value = 1;
-  }
-
-  polCalc();
-  const overlay = document.getElementById('polOverlay');
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function openPolGroupModal(groupId){
-  polCurrentGroup = groupId;
-  polCurrentMid = null;
-  const group = POL_GROUPS[groupId];
-
-  document.getElementById('polLabel').textContent = '🎞️ ' + group.nome;
-  document.getElementById('polTitle').textContent = group.nome;
-  document.getElementById('polTag').textContent = '✦ Escolha a quantidade de fotos';
-  document.getElementById('pol-acab').value = 'normal';
-
-  document.getElementById('pol-img-wrap').style.display = 'none';
-  document.getElementById('pol-qty-noimg').style.display = 'none';
-
-  const sel = document.getElementById('pol-group-select');
-  sel.innerHTML = group.opcoes.map((o,i) => '<option value="'+i+'">'+o.label+' — '+fmt(o.preco)+'</option>').join('');
-  sel.value = 0;
-  document.getElementById('pol-group-select-wrap').style.display = 'block';
-
-  polCalc();
-  const overlay = document.getElementById('polOverlay');
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function polGroupChange(){ polCalc(); }
-
-function closePolModal(e){
-  if(e && e.target !== document.getElementById('polOverlay')) return;
-  document.getElementById('polOverlay').classList.remove('open');
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.width = '';
-  window.scrollTo(0, 0);
-}
-function polQtyChange(d){
-  polQty = Math.max(1, polQty + d);
-  document.getElementById('polQty').textContent = polQty;
-  polCalc();
-}
-function getPolQtd(){
-  if(polCurrentGroup) return 1;
-  return POL_IMGS[polCurrentMid] ? polQty : (+document.getElementById('pol-qtd-input').value || 1);
-}
-function getPolGroupOpcao(){
-  const idx = +document.getElementById('pol-group-select').value;
-  return POL_GROUPS[polCurrentGroup].opcoes[idx];
-}
-function polCalc(){
-  const acab = document.getElementById('pol-acab').value;
-  let base, numFotos, qtd;
-
-  if(polCurrentGroup){
-    const opcao = getPolGroupOpcao();
-    base = opcao.preco;
-    numFotos = opcao.fotos;
-    qtd = 1;
-  } else {
-    qtd = getPolQtd();
-    base = POL_PRECOS[polCurrentMid];
-    numFotos = POL_NUMFOTOS[polCurrentMid];
-  }
-
-  const extra = fnAcabExtra(acab, numFotos);
-  const total = (base + extra) * qtd;
-  document.getElementById('pol-preco').textContent = fmt(total);
-}
-function polAddCart(){
-  const acab = document.getElementById('pol-acab').value;
-  const acabNome = fnAcabNome(acab);
-
-  if(polCurrentGroup){
-    const opcao = getPolGroupOpcao();
-    const extra = fnAcabExtra(acab, opcao.fotos);
-    const u = opcao.preco + extra;
-    cart.push({
-      id: Date.now(), tp: 'pol', mid: polCurrentGroup + '_' + opcao.fotos,
-      mn: '🎞️ ' + POL_GROUPS[polCurrentGroup].nome,
-      tl: acabNome, s: opcao.fotos+' fotos', q: 1, u: u, tot: u,
-      img: null, obs: ''
-    });
-  } else {
-    const qtd = getPolQtd();
-    const base = POL_PRECOS[polCurrentMid];
-    const numFotos = POL_NUMFOTOS[polCurrentMid];
-    const extra = fnAcabExtra(acab, numFotos);
-    const u = base + extra;
-    cart.push({
-      id: Date.now(), tp: 'pol', mid: polCurrentMid,
-      mn: '🎞️ ' + POL_NOMES[polCurrentMid],
-      tl: acabNome, s: numFotos+' fotos', q: qtd, u: u, tot: u*qtd,
-      img: POL_IMGS[polCurrentMid] || null, obs: ''
-    });
-  }
-  rCart();
-  closePolModal();
-  toast('✅ Polaroid adicionado!');
-}
-
-</script>
-
-
-
-<!-- MODAL PRODUTO BOTTONS -->
-<div class="pd-overlay" id="pdOverlay" onclick="closePdModal(event)">
-  <div class="pd-modal" id="pdModal">
-    <div class="pd-close-bar">
-      <span id="pdLabel">Botton</span>
-      <button class="pd-close" onclick="closePdModal()">✕</button>
-    </div>
-    <div class="pd-img-wrap">
-      <img id="pdImg" src="" alt="">
-      <div class="pd-qty-badge">
-        <button class="pd-qty-btn" onclick="pdQtyChange(-1)">−</button>
-        <span class="pd-qty-val" id="pdQty">1</span>
-        <button class="pd-qty-btn" onclick="pdQtyChange(1)">+</button>
-      </div>
-    </div>
-    <div class="pd-body">
-      <div class="pd-title" id="pdTitle">Modelo 1</div>
-      <div class="pd-tag">✦ Disponível</div>
-      <div class="pd-vars">
-        <div class="fr"><label>Tipo</label>
-          <select id="pd-t" onchange="pdCalc()">
-            <option value="normal">📌 Normal</option>
-            <option value="ima">🔲 Com Ímã</option>
-            <option value="holo">🌈 Holográfico</option>
-            <option value="holoima">🌈🔲 Holográfico + Ímã</option>
-          </select>
-        </div>
-        <div class="fr"><label>Tamanho</label>
-          <select id="pd-s" onchange="pdCalc()">
-            <option value="32">32mm</option>
-            <option value="44">44mm</option>
-            <option value="58">58mm</option>
-          </select>
-        </div>
-      </div>
-      <div class="pd-price-row">
-        <span class="pd-price-lbl">Subtotal:</span>
-        <strong class="pd-price-val" id="pd-price">R$ 3,00</strong>
-      </div>
-      <button class="pd-add" onclick="pdAddCart()">🛒 Adicionar ao carrinho</button>
+    <div class="hint-box">
+      💡 <strong>Como adicionar alguém da equipe:</strong><br>
+      1. Crie o login da pessoa no <strong>Firebase Console → Authentication → Add user</strong> (e-mail + senha).<br>
+      2. Copie o <strong>UID</strong> gerado para essa pessoa (aparece na lista de usuários).<br>
+      3. Cole o UID aqui e clique em Adicionar — a partir daí ela já consegue entrar neste painel.
     </div>
   </div>
 </div>
 
-
-
-<!-- MODAL FOTOS NORMAIS -->
-<div class="pd-overlay" id="fnOverlay" onclick="closeFnModal(event)">
-  <div class="pd-modal">
-    <div class="pd-close-bar">
-      <span>📸 Fotos Normais</span>
-      <button class="pd-close" onclick="closeFnModal()">✕</button>
-    </div>
-    <div class="pd-body" style="padding-top:20px">
-      <div class="pd-vars">
-        <div class="fr"><label>Tamanho</label>
-          <select id="fn-tam" onchange="fnCalc()">
-            <option value="10x15">10 × 15 cm</option>
-            <option value="13x18">13 × 18 cm</option>
-            <option value="15x21">15 × 21 cm</option>
-          </select>
-        </div>
-        <div class="fr"><label>Quantidade</label>
-          <select id="fn-qtd" onchange="fnCalc()">
-            <option value="5">5 unidades</option>
-            <option value="10">10 unidades</option>
-            <option value="20">20 unidades</option>
-            <option value="30">30 unidades</option>
-            <option value="50">50 unidades</option>
-          </select>
-        </div>
-      </div>
-      <div class="fr"><label>Acabamento (por foto)</label>
-        <select id="fn-acab" onchange="fnCalc()">
-          <option value="normal">Normal (sem acréscimo)</option>
-          <option value="laminado">Laminado (+R$1,00/foto)</option>
-          <option value="holo">Holográfico (+R$1,00/foto)</option>
-          <option value="lamholo">Laminado + Holográfico (+R$2,00/foto)</option>
-        </select>
-      </div>
-      <div class="pd-price-row">
-        <span class="pd-price-lbl">Subtotal:</span>
-        <strong class="pd-price-val" id="fn-preco">R$ 24,90</strong>
-      </div>
-      <button class="pd-add" onclick="fnAddCart()">🛒 Adicionar ao carrinho</button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL POLAROID/ESPECIAIS -->
-<div class="pd-overlay" id="polOverlay" onclick="closePolModal(event)">
-  <div class="pd-modal">
-    <div class="pd-close-bar">
-      <span id="polLabel">Polaroid</span>
-      <button class="pd-close" onclick="closePolModal()">✕</button>
-    </div>
-    <div class="pd-img-wrap" id="pol-img-wrap" style="display:none">
-      <img id="polImg" src="" alt="">
-      <div class="pd-qty-badge">
-        <button class="pd-qty-btn" onclick="polQtyChange(-1)">−</button>
-        <span class="pd-qty-val" id="polQty">1</span>
-        <button class="pd-qty-btn" onclick="polQtyChange(1)">+</button>
-      </div>
-    </div>
-    <div class="pd-body">
-      <div class="pd-title" id="polTitle">Modelo</div>
-      <div class="pd-tag" id="polTag">✦ Disponível</div>
-      <div class="pd-vars" id="pol-qty-noimg" style="display:none">
-        <div class="fr"><label>Quantidade</label>
-          <input type="number" id="pol-qtd-input" value="1" min="1" oninput="polCalc()" style="padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;width:100%">
-        </div>
-      </div>
-      <div class="fr" id="pol-group-select-wrap" style="display:none">
-        <label>Quantidade de fotos</label>
-        <select id="pol-group-select" onchange="polGroupChange()"></select>
-      </div>
-      <div class="fr"><label>Acabamento (por foto)</label>
-        <select id="pol-acab" onchange="polCalc()">
-          <option value="normal">Normal (sem acréscimo)</option>
-          <option value="laminado">Laminado (+R$1,00/foto)</option>
-          <option value="holo">Holográfico (+R$1,00/foto)</option>
-          <option value="lamholo">Laminado + Holográfico (+R$2,00/foto)</option>
-        </select>
-      </div>
-      <div class="pd-price-row">
-        <span class="pd-price-lbl">Subtotal:</span>
-        <strong class="pd-price-val" id="pol-preco">R$ 1,50</strong>
-      </div>
-      <button class="pd-add" onclick="polAddCart()">🛒 Adicionar ao carrinho</button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL ESPELHINHOS -->
-<div class="pd-overlay" id="espOverlay" onclick="closeEspModal(event)">
-  <div class="pd-modal">
-    <div class="pd-close-bar">
-      <span id="espLabel">Espelhinho</span>
-      <button class="pd-close" onclick="closeEspModal()">✕</button>
-    </div>
-    <img id="espImg" src="" alt="" class="pd-modal-img" style="width:100%;max-height:260px;object-fit:cover">
-    <div class="pd-body">
-      <div class="pd-title" id="espTitle">Modelo</div>
-      <div class="pd-tag">🪞 Espelhinho de Bolso/Bolsa · 6x9cm</div>
-      <div class="pd-vars">
-        <div class="fr">
-          <label>Tipo</label>
-          <select id="esp-tipo2" onchange="espCalc2()">
-            <option value="normal">Normal (vinil adesivo) — R$15,00</option>
-            <option value="holo">Holográfico — R$20,00</option>
-          </select>
-        </div>
-        <div class="fr">
-          <label>Quantidade</label>
-          <input type="number" id="esp-qtd2" value="1" min="1" oninput="espCalc2()" style="padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;width:100%">
-        </div>
-      </div>
-      <div class="fr" id="esp-obs-wrap2" style="display:none">
-        <label>Sua Arte / Observações</label>
-        <textarea id="esp-obs2" placeholder="Descreva sua ideia ou envie referência pelo WhatsApp após o pedido..."></textarea>
-      </div>
-      <div class="pd-price-row">
-        <span class="pd-price-lbl">Subtotal:</span>
-        <strong class="pd-price-val" id="esp-preco2">R$ 15,00</strong>
-      </div>
-      <button class="pd-add" onclick="espAddCart2()">🛒 Adicionar ao carrinho</button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL: Dados do Cliente -->
-<div id="cliente-overlay" style="display:none;position:fixed;inset:0;background:rgba(61,44,46,0.45);z-index:9999;align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#fff;border-radius:20px;padding:24px;width:100%;max-width:360px;box-shadow:0 8px 30px rgba(92,58,63,0.15);">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+<!-- MODAL DETALHE DO PEDIDO -->
+<div class="overlay" id="detalheOverlay">
+  <div class="sheet">
+    <div class="sheet-hdr">
       <div>
-        <div style="font-size:17px;font-weight:700;color:#5C3A3F;">Antes de enviar...</div>
-        <div style="font-size:12px;color:#B76E79;margin-top:2px;">Precisamos dos seus dados 😊</div>
+        <div class="sheet-title" id="detCodigo">IMG-000</div>
+        <div style="font-size:12px;color:var(--soft);margin-top:2px" id="detData"></div>
       </div>
-      <button onclick="fecharModalCliente()" style="background:none;border:none;font-size:20px;color:#C9A9A6;cursor:pointer;line-height:1;">✕</button>
+      <button class="sheet-close" id="btnFecharDetalhe">✕</button>
     </div>
-    <div id="cliente-error" style="display:none;background:#F3E4E4;color:#9A5555;font-size:12px;padding:8px 12px;border-radius:8px;margin-bottom:12px;"></div>
-    <div style="display:flex;flex-direction:column;gap:10px;">
-      <input id="cli-nome" type="text" placeholder="Nome *" maxlength="50"
-        style="padding:12px 14px;border:1.5px solid #EEDDD9;border-radius:12px;font-size:15px;color:#3D2C2E;outline:none;width:100%;box-sizing:border-box;">
-      <input id="cli-sobrenome" type="text" placeholder="Sobrenome *" maxlength="50"
-        style="padding:12px 14px;border:1.5px solid #EEDDD9;border-radius:12px;font-size:15px;color:#3D2C2E;outline:none;width:100%;box-sizing:border-box;">
-      <input id="cli-telefone" type="tel" placeholder="WhatsApp com DDD * ex: 11987654321" maxlength="20"
-        style="padding:12px 14px;border:1.5px solid #EEDDD9;border-radius:12px;font-size:15px;color:#3D2C2E;outline:none;width:100%;box-sizing:border-box;">
+
+    <div class="sheet-section">
+      <div class="sheet-label">Cliente</div>
+      <div id="detCliente" style="font-size:15px;font-weight:600"></div>
+      <a href="#" target="_blank" class="contato-link" id="detContatoLink">💬 Abrir WhatsApp</a>
     </div>
-    <button id="cli-btn-enviar" onclick="confirmarPedido()"
-      style="margin-top:16px;width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,#C08497,#B76E79);color:#fff;font-size:15px;font-weight:600;cursor:pointer;">
-      Registrar e enviar no WhatsApp 🚀
-    </button>
-    <p style="font-size:11px;color:#B9A4A0;text-align:center;margin-top:10px;">
-      Seus dados são usados apenas para o pedido.
-    </p>
+
+    <div class="sheet-section">
+      <div class="sheet-label">Status do pedido</div>
+      <select class="status-select" id="detStatusSelect">
+        <option value="Pendente">Pendente</option>
+        <option value="Em_producao">Em produção</option>
+        <option value="Enviado">Enviado</option>
+        <option value="Entregue">Entregue</option>
+        <option value="Cancelado">Cancelado</option>
+      </select>
+    </div>
+
+    <div class="sheet-section">
+      <div class="sheet-label">Itens do pedido</div>
+      <div id="detItens"></div>
+      <div class="total-row"><span>Total</span><span id="detTotal">R$ 0,00</span></div>
+    </div>
+
+    <div class="sheet-section" id="detObsWrap">
+      <div class="sheet-label">Observações</div>
+      <div id="detObs" style="font-size:13px;color:var(--soft)"></div>
+    </div>
   </div>
 </div>
 
-<!-- Firebase: salvar pedido em subcoleção própria (o site só CRIA, nunca lê/edita/apaga) -->
+<div class="toast" id="toast"></div>
+
 <script type="module">
-  import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, serverTimestamp }
-    from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import {
+  getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut
+} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
+import {
+  getFirestore, collection, doc, onSnapshot, updateDoc, setDoc, deleteDoc, getDocs
+} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDpd0JoVFUcPy-Ep66hsTpc187_2F_DI24",
-    authDomain: "imaginae-37bc1.firebaseapp.com",
-    projectId: "imaginae-37bc1",
-    storageBucket: "imaginae-37bc1.firebasestorage.app",
-    messagingSenderId: "676368164608",
-    appId: "1:676368164608:web:9d5761c4ef270f4b0d75e5",
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyDpd0JoVFUcPy-Ep66hsTpc187_2F_DI24",
+  authDomain: "imaginae-37bc1.firebaseapp.com",
+  projectId: "imaginae-37bc1",
+  storageBucket: "imaginae-37bc1.firebasestorage.app",
+  messagingSenderId: "676368164608",
+  appId: "1:676368164608:web:9d5761c4ef270f4b0d75e5",
+};
 
-  const fbApp = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-  const db = getFirestore(fbApp);
-  // Cada pedido agora é um documento independente dentro desta subcoleção.
-  // O site NUNCA lê essa coleção — só cria (addDoc). Isso permite uma regra
-  // de segurança do tipo "allow create; disallow read, update, delete" para
-  // visitantes não autenticados, protegendo os dados de todos os clientes.
-  const PEDIDOS_REF = collection(db, "imaginae", "dados", "pedidos");
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-  // Código local, gerado no navegador (não depende de ler o banco).
-  // Combina timestamp + trecho aleatório: não é sequencial (ex: IMG-001,
-  // IMG-002...), mas é único e não exige nenhuma leitura prévia do Firestore.
-  function gerarCodigo(){
-    const rand = Math.random().toString(36).slice(2,6).toUpperCase();
-    return `IMG-${Date.now().toString(36).toUpperCase()}${rand}`;
+const PEDIDOS_REF = collection(db, "imaginae", "dados", "pedidos");
+const ADMINS_REF = collection(db, "admins");
+
+let pedidosCache = [];
+let unsubscribePedidos = null;
+let currentUser = null;
+
+// ---------- TOAST ----------
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2600);
+}
+
+// ---------- LOGIN ----------
+const loginScreen = document.getElementById('loginScreen');
+const appEl = document.getElementById('app');
+const loginError = document.getElementById('loginError');
+
+document.getElementById('btnLogin').addEventListener('click', doLogin);
+document.getElementById('loginSenha').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
+
+async function doLogin(){
+  const email = document.getElementById('loginEmail').value.trim();
+  const senha = document.getElementById('loginSenha').value;
+  loginError.style.display = 'none';
+  if(!email || !senha){
+    loginError.textContent = 'Preencha e-mail e senha.';
+    loginError.style.display = 'block';
+    return;
   }
-
-  function mapearItens(cart){
-    const catMap={cong:'Bottons',foto:'Bottons',arte:'Bottons',mp:'Marcadores',esp:'Espelhos de Bolso',fn:'Fotos Personalizadas',pol:'Fotos Personalizadas'};
-    return cart.map(i=>({
-      id:`${Date.now()}-${Math.random().toString(36).slice(2,6)}`,
-      produtoId: i.mid||i.tp,
-      produtoNome: i.mn,
-      quantidade: i.q,
-      detalhe:`${i.tl} · ${i.s}`,
-      obs: i.obs||'',
-      categoria: catMap[i.tp]||'Outros'
-    }));
+  const btn = document.getElementById('btnLogin');
+  btn.disabled = true;
+  btn.textContent = 'Entrando...';
+  try{
+    await signInWithEmailAndPassword(auth, email, senha);
+  }catch(e){
+    loginError.textContent = 'E-mail ou senha inválidos.';
+    loginError.style.display = 'block';
+  }finally{
+    btn.disabled = false;
+    btn.textContent = 'Entrar';
   }
+}
 
-  window._fbSalvarPedido = async function(nomeCompleto, telefone, cart){
-    const codigo = gerarCodigo();
-    const tot = cart.reduce((s,i)=>s+i.tot,0);
+document.getElementById('btnLogout').addEventListener('click', ()=> signOut(auth));
 
-    const novoPedido = {
-      codigo, cliente: nomeCompleto, contato: telefone,
-      canal:"WhatsApp",
-      itens: mapearItens(cart),
-      valorTotal: tot.toFixed(2),
-      formaPagamento:"PIX Direto",
-      status:"Pendente",
-      dataPedido: new Date().toISOString().slice(0,10),
-      prazoEntrega:"",
-      observacoes:"Pedido recebido pelo site",
-      origem:"site",
-      criadoEm: serverTimestamp()
-    };
+onAuthStateChanged(auth, async (user) => {
+  currentUser = user;
+  if(user){
+    loginScreen.style.display = 'none';
+    appEl.classList.add('show');
+    document.getElementById('userEmailLabel').textContent = user.email;
+    iniciarEscutaPedidos();
+    carregarEquipe();
+  }else{
+    loginScreen.style.display = 'flex';
+    appEl.classList.remove('show');
+    if(unsubscribePedidos){ unsubscribePedidos(); unsubscribePedidos = null; }
+  }
+});
 
-    // addDoc = create-only. Não lê, não edita, não apaga nada existente.
-    await addDoc(PEDIDOS_REF, novoPedido);
-    return {codigo, tot};
-  };
-
-  // Fechar modal ao clicar fora
-  document.getElementById('cliente-overlay').addEventListener('click',function(e){
-    if(e.target===this) fecharModalCliente();
+// ---------- NAVEGAÇÃO ENTRE ABAS ----------
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('act'));
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('act'));
+    btn.classList.add('act');
+    document.getElementById('view-'+btn.dataset.view).classList.add('act');
   });
+});
+
+// ---------- PEDIDOS (tempo real) ----------
+function iniciarEscutaPedidos(){
+  if(unsubscribePedidos) return;
+  unsubscribePedidos = onSnapshot(PEDIDOS_REF, (snap)=>{
+    pedidosCache = snap.docs.map(d=>({ id: d.id, ...d.data() }));
+    // mais recentes primeiro
+    pedidosCache.sort((a,b)=>{
+      const ta = a.criadoEm?.toMillis ? a.criadoEm.toMillis() : 0;
+      const tb = b.criadoEm?.toMillis ? b.criadoEm.toMillis() : 0;
+      return tb - ta;
+    });
+    renderDashboard();
+    renderPedidos();
+  }, (err)=>{
+    console.error('Erro ao ler pedidos:', err);
+    document.getElementById('pedidoList').innerHTML =
+      '<div class="empty-state"><div class="ic">⚠️</div>Não foi possível carregar os pedidos.<br>Confira se seu e-mail está na lista de Equipe.</div>';
+  });
+}
+
+function fmtMoeda(v){
+  const n = typeof v === 'string' ? parseFloat(v) : v;
+  return 'R$ ' + (isNaN(n) ? '0,00' : n.toFixed(2).replace('.',','));
+}
+
+function statusLabel(s){
+  const map = {Pendente:'Pendente', Em_producao:'Em produção', Enviado:'Enviado', Entregue:'Entregue', Cancelado:'Cancelado'};
+  return map[s] || s || 'Pendente';
+}
+
+// ---------- DASHBOARD ----------
+function renderDashboard(){
+  const total = pedidosCache.length;
+  const pendentes = pedidosCache.filter(p=>(p.status||'Pendente')==='Pendente').length;
+  const hojeStr = new Date().toISOString().slice(0,10);
+  const hoje = pedidosCache.filter(p=>p.dataPedido===hojeStr).length;
+  const faturamento = pedidosCache.reduce((s,p)=>s + (parseFloat(p.valorTotal)||0), 0);
+
+  document.getElementById('dashTotalPedidos').textContent = total;
+  document.getElementById('dashPendentes').textContent = pendentes;
+  document.getElementById('dashHoje').textContent = hoje;
+  document.getElementById('dashFaturamento').textContent = fmtMoeda(faturamento).replace('R$ ','');
+
+  const statusOrder = ['Pendente','Em_producao','Enviado','Entregue','Cancelado'];
+  const counts = {};
+  statusOrder.forEach(s=>counts[s]=0);
+  pedidosCache.forEach(p=>{ const s=p.status||'Pendente'; counts[s]=(counts[s]||0)+1; });
+
+  const wrap = document.getElementById('dashStatusBreakdown');
+  wrap.innerHTML = statusOrder.map(s=>`
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px">
+      <span class="status-badge status-${s}">${statusLabel(s)}</span>
+      <strong>${counts[s]}</strong>
+    </div>
+  `).join('');
+}
+
+// ---------- LISTA DE PEDIDOS ----------
+function renderPedidos(){
+  const busca = document.getElementById('buscaPedido').value.trim().toLowerCase();
+  const filtroStatus = document.getElementById('filtroStatus').value;
+
+  let lista = pedidosCache.filter(p=>{
+    if(filtroStatus && (p.status||'Pendente') !== filtroStatus) return false;
+    if(busca){
+      const alvo = `${p.codigo||''} ${p.cliente||''} ${p.contato||''}`.toLowerCase();
+      if(!alvo.includes(busca)) return false;
+    }
+    return true;
+  });
+
+  const listEl = document.getElementById('pedidoList');
+  if(lista.length === 0){
+    listEl.innerHTML = '<div class="empty-state"><div class="ic">📭</div>Nenhum pedido encontrado.</div>';
+    return;
+  }
+
+  listEl.innerHTML = lista.map(p=>{
+    const status = p.status || 'Pendente';
+    return `
+    <div class="pedido-card" data-id="${p.id}">
+      <div class="ped-top">
+        <div>
+          <div class="ped-codigo">${p.codigo||'—'}</div>
+          <div class="ped-cliente">${p.cliente||'Cliente não identificado'}</div>
+        </div>
+        <div class="ped-valor">${fmtMoeda(p.valorTotal)}</div>
+      </div>
+      <div class="ped-meta">
+        <span class="status-badge status-${status}">${statusLabel(status)}</span>
+        <span class="ped-data">${p.dataPedido||''}</span>
+      </div>
+    </div>`;
+  }).join('');
+
+  listEl.querySelectorAll('.pedido-card').forEach(card=>{
+    card.addEventListener('click', ()=> abrirDetalhe(card.dataset.id));
+  });
+}
+
+document.getElementById('buscaPedido').addEventListener('input', renderPedidos);
+document.getElementById('filtroStatus').addEventListener('change', renderPedidos);
+
+// ---------- DETALHE DO PEDIDO ----------
+const detalheOverlay = document.getElementById('detalheOverlay');
+let pedidoAbertoId = null;
+
+function abrirDetalhe(id){
+  const p = pedidosCache.find(x=>x.id===id);
+  if(!p) return;
+  pedidoAbertoId = id;
+
+  document.getElementById('detCodigo').textContent = p.codigo || '—';
+  document.getElementById('detData').textContent = p.dataPedido || '';
+  document.getElementById('detCliente').textContent = p.cliente || 'Cliente não identificado';
+
+  const tel = (p.contato||'').replace(/\D/g,'');
+  const linkWa = document.getElementById('detContatoLink');
+  if(tel){
+    linkWa.href = `https://wa.me/55${tel}`;
+    linkWa.style.display = 'inline-flex';
+  }else{
+    linkWa.style.display = 'none';
+  }
+
+  document.getElementById('detStatusSelect').value = p.status || 'Pendente';
+
+  const itensHtml = (p.itens||[]).map(i=>`
+    <div class="item-row">
+      <div>
+        <div class="item-name">${i.produtoNome||''}</div>
+        <div class="item-det">${i.detalhe||''}${i.obs ? ' · '+i.obs : ''}</div>
+      </div>
+      <div>${i.quantidade||1}x</div>
+    </div>
+  `).join('') || '<div class="item-det">Sem itens detalhados.</div>';
+  document.getElementById('detItens').innerHTML = itensHtml;
+  document.getElementById('detTotal').textContent = fmtMoeda(p.valorTotal);
+
+  const obsWrap = document.getElementById('detObsWrap');
+  if(p.observacoes){
+    obsWrap.style.display = 'block';
+    document.getElementById('detObs').textContent = p.observacoes;
+  }else{
+    obsWrap.style.display = 'none';
+  }
+
+  detalheOverlay.classList.add('show');
+}
+
+document.getElementById('btnFecharDetalhe').addEventListener('click', ()=>{
+  detalheOverlay.classList.remove('show');
+  pedidoAbertoId = null;
+});
+detalheOverlay.addEventListener('click', (e)=>{
+  if(e.target === detalheOverlay){ detalheOverlay.classList.remove('show'); pedidoAbertoId = null; }
+});
+
+document.getElementById('detStatusSelect').addEventListener('change', async (e)=>{
+  if(!pedidoAbertoId) return;
+  const novoStatus = e.target.value;
+  try{
+    await updateDoc(doc(db, "imaginae", "dados", "pedidos", pedidoAbertoId), { status: novoStatus });
+    toast('Status atualizado ✓');
+  }catch(err){
+    console.error(err);
+    toast('Erro ao atualizar status');
+  }
+});
+
+// ---------- EQUIPE (coleção admins) ----------
+async function carregarEquipe(){
+  try{
+    const snap = await getDocs(ADMINS_REF);
+    const listEl = document.getElementById('adminList');
+    if(snap.empty){
+      listEl.innerHTML = '<div style="font-size:13px;color:var(--soft)">Nenhuma pessoa cadastrada ainda.</div>';
+      return;
+    }
+    listEl.innerHTML = snap.docs.map(d=>{
+      const data = d.data();
+      const isMe = currentUser && d.id === currentUser.uid;
+      return `
+      <div class="admin-item">
+        <div>
+          <div style="font-weight:600">${data.email || d.id}</div>
+          <div style="font-size:11px;color:var(--soft)">${isMe ? 'Você' : 'UID: '+d.id}</div>
+        </div>
+        ${isMe ? '' : `<button class="admin-remove" data-uid="${d.id}">Remover</button>`}
+      </div>`;
+    }).join('');
+
+    listEl.querySelectorAll('.admin-remove').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        if(!confirm('Remover o acesso desta pessoa ao painel?')) return;
+        try{
+          await deleteDoc(doc(db, "admins", btn.dataset.uid));
+          toast('Acesso removido ✓');
+          carregarEquipe();
+        }catch(err){
+          console.error(err);
+          toast('Erro ao remover acesso');
+        }
+      });
+    });
+  }catch(err){
+    console.error('Erro ao carregar equipe:', err);
+    document.getElementById('adminList').innerHTML =
+      '<div style="font-size:13px;color:var(--soft)">Não foi possível carregar a equipe.</div>';
+  }
+}
+
+document.getElementById('btnAddAdmin').addEventListener('click', async ()=>{
+  const uid = document.getElementById('novoAdminUid').value.trim();
+  if(!uid){ toast('Cole o UID da pessoa primeiro'); return; }
+  try{
+    await setDoc(doc(db, "admins", uid), {
+      adicionadoPor: currentUser?.email || '',
+      adicionadoEm: new Date().toISOString()
+    });
+    document.getElementById('novoAdminUid').value = '';
+    toast('Pessoa adicionada à equipe ✓');
+    carregarEquipe();
+  }catch(err){
+    console.error(err);
+    toast('Erro ao adicionar. Confira o UID.');
+  }
+});
 </script>
-
-<!-- Botão WhatsApp sempre visível -->
-<a href="https://wa.me/5511981793021?text=Ol%C3%A1!%20Tenho%20interesse%20nos%20produtos%20da%20IMAGINAE%20%F0%9F%98%8A" target="_blank" class="wa-float" aria-label="Falar no WhatsApp">
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="white" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.55 4.097 1.512 5.82L0 24l6.363-1.468A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.842 0-3.568-.497-5.063-1.367l-.363-.215-3.775.871.901-3.668-.236-.377A9.945 9.945 0 012 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/></svg>
-  <span>WhatsApp</span>
-</a>
-
 </body>
 </html>
