@@ -738,6 +738,68 @@ function slugCusto(categoria, detalhe){
   return `${categoria}__${detalhe}`.replace(/[\/\.\#\$\[\]]/g, '-').trim();
 }
 
+// Custos de referência — PIOR CENÁRIO (margem de segurança sobre a planilha tabela_custos_imaginae.xlsx).
+// Fotos Personalizadas: teto real da faixa de mercado (R$0,25–1,90), mantendo os deltas de acabamento.
+// Bottons/Marcadores: sem faixa na planilha (comentário avisa que ímã e couché variam muito) → +30% de margem.
+// Espelhos de Bolso: baseado em uma única amostra de fornecedor → +15% de margem.
+// Chave = "Categoria||Detalhe" (mesmo formato de chaveCusto), valor = custo unitário em R$.
+const CUSTOS_ESTIMATIVA = {
+  'Bottons||Normal (Alfinete) · 32': 0.85,
+  'Bottons||Normal (Alfinete) · 44': 0.91,
+  'Bottons||Normal (Alfinete) · 58': 1.43,
+  'Bottons||Holográfico · 32': 1.11,
+  'Bottons||Holográfico · 44': 1.17,
+  'Bottons||Holográfico · 58': 1.69,
+  'Bottons||Com Ímã · 32': 2.80,
+  'Bottons||Com Ímã · 44': 2.86,
+  'Bottons||Com Ímã · 58': 3.38,
+  'Bottons||Holográfico + Ímã · 32': 3.06,
+  'Bottons||Holográfico + Ímã · 44': 3.12,
+  'Bottons||Holográfico + Ímã · 58': 3.64,
+  'Marcadores||Normal · -': 0.26,
+  'Marcadores||Laminado · -': 0.39,
+  'Marcadores||Holográfico · -': 0.46,
+  'Marcadores||Laminado + Holográfico · -': 0.59,
+  'Espelhos de Bolso||Normal · 6x9cm': 2.30,
+  'Espelhos de Bolso||Holográfico · 6x9cm': 2.53,
+  'Fotos Personalizadas||Normal · 5 un': 1.90,
+  'Fotos Personalizadas||Normal · 10 un': 1.90,
+  'Fotos Personalizadas||Normal · 20 un': 1.90,
+  'Fotos Personalizadas||Normal · 30 un': 1.90,
+  'Fotos Personalizadas||Normal · 50 un': 1.90,
+  'Fotos Personalizadas||Laminado · 5 un': 2.10,
+  'Fotos Personalizadas||Laminado · 10 un': 2.10,
+  'Fotos Personalizadas||Laminado · 20 un': 2.10,
+  'Fotos Personalizadas||Laminado · 30 un': 2.10,
+  'Fotos Personalizadas||Laminado · 50 un': 2.10,
+  'Fotos Personalizadas||Holográfico · 5 un': 2.15,
+  'Fotos Personalizadas||Holográfico · 10 un': 2.15,
+  'Fotos Personalizadas||Holográfico · 20 un': 2.15,
+  'Fotos Personalizadas||Holográfico · 30 un': 2.15,
+  'Fotos Personalizadas||Holográfico · 50 un': 2.15,
+  'Fotos Personalizadas||Laminado + Holográfico · 5 un': 2.30,
+  'Fotos Personalizadas||Laminado + Holográfico · 10 un': 2.30,
+  'Fotos Personalizadas||Laminado + Holográfico · 20 un': 2.30,
+  'Fotos Personalizadas||Laminado + Holográfico · 30 un': 2.30,
+  'Fotos Personalizadas||Laminado + Holográfico · 50 un': 2.30,
+  'Fotos Personalizadas||Normal · 1 fotos': 1.90,
+  'Fotos Personalizadas||Normal · 5 fotos': 1.90,
+  'Fotos Personalizadas||Normal · 10 fotos': 1.90,
+  'Fotos Personalizadas||Normal · 20 fotos': 1.90,
+  'Fotos Personalizadas||Laminado · 1 fotos': 2.10,
+  'Fotos Personalizadas||Laminado · 5 fotos': 2.10,
+  'Fotos Personalizadas||Laminado · 10 fotos': 2.10,
+  'Fotos Personalizadas||Laminado · 20 fotos': 2.10,
+  'Fotos Personalizadas||Holográfico · 1 fotos': 2.15,
+  'Fotos Personalizadas||Holográfico · 5 fotos': 2.15,
+  'Fotos Personalizadas||Holográfico · 10 fotos': 2.15,
+  'Fotos Personalizadas||Holográfico · 20 fotos': 2.15,
+  'Fotos Personalizadas||Laminado + Holográfico · 1 fotos': 2.30,
+  'Fotos Personalizadas||Laminado + Holográfico · 5 fotos': 2.30,
+  'Fotos Personalizadas||Laminado + Holográfico · 10 fotos': 2.30,
+  'Fotos Personalizadas||Laminado + Holográfico · 20 fotos': 2.30
+};
+
 // Catálogo conhecido de itens do site de pedidos (imaginae-papelaria-criativa),
 // espelhando as combinações reais de categoria+detalhe que o site gera.
 function catalogoConhecido(){
@@ -764,7 +826,10 @@ function catalogoConhecido(){
     itens.push({ categoria:'Fotos Personalizadas', detalhe:`${a} · ${f} fotos` })
   ));
 
-  return itens;
+  return itens.map(it => ({
+    ...it,
+    custo: CUSTOS_ESTIMATIVA[chaveCusto(it.categoria, it.detalhe)] || 0
+  }));
 }
 
 document.getElementById('btnPrecadastrar').addEventListener('click', async ()=>{
@@ -773,10 +838,10 @@ document.getElementById('btnPrecadastrar').addEventListener('click', async ()=>{
     toast('Catálogo já está todo cadastrado');
     return;
   }
-  if(!confirm(`Isso vai criar ${catalogo.length} linha(s) de custo (valor R$0, você edita depois). Continuar?`)) return;
+  if(!confirm(`Isso vai criar ${catalogo.length} linha(s) de custo já com uma estimativa de pior cenário (com margem de segurança — você pode ajustar depois). Continuar?`)) return;
   try{
     for(const it of catalogo){
-      await setDoc(doc(db, "custos", slugCusto(it.categoria, it.detalhe)), { categoria: it.categoria, detalhe: it.detalhe, custo: 0 });
+      await setDoc(doc(db, "custos", slugCusto(it.categoria, it.detalhe)), { categoria: it.categoria, detalhe: it.detalhe, custo: it.custo || 0 });
     }
     toast(`${catalogo.length} linha(s) pré-cadastrada(s) ✓`);
     carregarCustos();
