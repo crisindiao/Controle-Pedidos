@@ -54,12 +54,6 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
 .dash-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:16px}
 .dash-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--rose)}
 .dash-label{font-size:11px;color:var(--soft);margin-top:2px}
-.pedidos-resumo{display:flex;align-items:center;justify-content:center;gap:14px;background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:14px 10px;margin-bottom:14px}
-.pr-item{flex:1;text-align:center}
-.pr-num{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--rose)}
-.pr-item:last-child .pr-num{color:var(--teal)}
-.pr-label{font-size:11px;color:var(--soft);margin-top:2px}
-.pr-vs{font-size:11px;color:var(--soft);font-weight:600;opacity:.6}
 .dash-card.wide{grid-column:1/-1}
 
 /* ===== FILTROS ===== */
@@ -184,8 +178,12 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
         <div class="dash-num" id="dashFaturamento">--</div>
         <div class="dash-label">Faturamento total (R$)</div>
       </div>
-      <div class="dash-card wide">
-        <div class="dash-num" id="dashLucro">--</div>
+      <div class="dash-card">
+        <div class="dash-num" id="dashCustoTotal" style="color:var(--danger)">--</div>
+        <div class="dash-label">Custo total (R$) · pedidos Entregue/A caminho com custos cadastrados</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-num" id="dashLucro" style="color:var(--teal)">--</div>
         <div class="dash-label">Lucro total (R$) · pedidos Entregue/A caminho com custos cadastrados</div>
       </div>
       <div class="dash-card wide">
@@ -207,17 +205,6 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
         <option value="Entregue">Entregue</option>
         <option value="Cancelado">Cancelado</option>
       </select>
-    </div>
-    <div class="pedidos-resumo" id="pedidosResumo">
-      <div class="pr-item">
-        <div class="pr-num" id="prCusto">R$ 0,00</div>
-        <div class="pr-label">Custo total</div>
-      </div>
-      <div class="pr-vs">vs</div>
-      <div class="pr-item">
-        <div class="pr-num" id="prLucro">R$ 0,00</div>
-        <div class="pr-label">Lucro total</div>
-      </div>
     </div>
     <div class="pedido-list" id="pedidoList">
       <div class="empty-state"><div class="ic">⏳</div>Carregando pedidos...</div>
@@ -483,7 +470,9 @@ function renderDashboard(){
     const s = p.status||'Pendente';
     return (s==='Enviado'||s==='Entregue') && pedidoTemCustosCompletos(p);
   });
+  const custoTotal = elegiveis.reduce((s,p)=>s + calcCustoItens(p) + (parseFloat(p.custoExtra)||0), 0);
   const lucroTotal = elegiveis.reduce((s,p)=>s + calcLucro(p), 0);
+  document.getElementById('dashCustoTotal').textContent = fmtMoeda(custoTotal).replace('R$ ','');
   document.getElementById('dashLucro').textContent = fmtMoeda(lucroTotal).replace('R$ ','');
 
   const statusOrder = ['Pendente','Em_producao','Enviado','Entregue','Cancelado'];
@@ -515,12 +504,6 @@ function renderPedidos(){
   });
 
   const listEl = document.getElementById('pedidoList');
-
-  const paraTotais = lista.filter(p=>(p.status||'Pendente') !== 'Cancelado');
-  const custoTotalLista = paraTotais.reduce((s,p)=>s + calcCustoItens(p) + (parseFloat(p.custoExtra)||0), 0);
-  const lucroTotalLista = paraTotais.reduce((s,p)=>s + calcLucro(p), 0);
-  document.getElementById('prCusto').textContent = fmtMoeda(custoTotalLista);
-  document.getElementById('prLucro').textContent = fmtMoeda(lucroTotalLista);
 
   if(lista.length === 0){
     listEl.innerHTML = '<div class="empty-state"><div class="ic">📭</div>Nenhum pedido encontrado.</div>';
