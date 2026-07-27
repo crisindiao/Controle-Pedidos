@@ -107,6 +107,23 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
 .add-admin-form button{padding:11px 16px;border:none;border-radius:10px;background:var(--teal);color:#fff;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap}
 .hint-box{background:var(--teal-p);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--teal);line-height:1.5;margin-top:14px}
 
+/* ===== CUSTOS ===== */
+.custo-add-form{display:flex;flex-direction:column;gap:8px;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px}
+.custo-add-form input{padding:11px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit}
+.custo-add-form button{padding:11px;border:none;border-radius:8px;background:var(--teal);color:#fff;font-weight:700;font-size:13px;cursor:pointer}
+.custo-detect-btn{width:100%;padding:11px;border:1.5px dashed var(--rose-l);border-radius:10px;background:var(--rose-p);color:var(--rose);font-weight:700;font-size:12.5px;cursor:pointer;margin-bottom:14px}
+.custo-group{margin-bottom:16px}
+.custo-group-title{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--teal);margin-bottom:8px;padding-bottom:4px;border-bottom:1.5px solid var(--border)}
+.custo-row{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:9px 12px;margin-bottom:6px}
+.custo-row .cr-det{flex:1;font-size:12.5px;line-height:1.4}
+.custo-row .cr-det strong{display:block;font-size:11px;color:var(--soft);font-weight:600}
+.custo-row input[type=number]{width:78px;padding:8px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;text-align:right;font-family:inherit}
+.custo-row .cr-del{background:none;border:none;color:var(--danger);font-size:16px;cursor:pointer;padding:2px 4px}
+.lucro-box{background:var(--teal-p);border-radius:12px;padding:14px;margin-top:10px}
+.lucro-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;color:var(--soft)}
+.lucro-row.final{font-weight:700;font-size:16px;color:var(--teal);border-top:1.5px solid rgba(42,125,123,.25);margin-top:6px;padding-top:8px}
+.custo-extra-input{width:100%;padding:11px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;margin-top:4px}
+
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);background:#2D2D2D;color:#fff;padding:12px 20px;border-radius:30px;font-size:13px;font-weight:600;z-index:999;transition:transform .3s}
 .toast.show{transform:translateX(-50%) translateY(0)}
 </style>
@@ -138,6 +155,7 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
   <div class="tabs">
     <button class="tab-btn act" data-view="dashboard">📊 Resumo</button>
     <button class="tab-btn" data-view="pedidos">📦 Pedidos</button>
+    <button class="tab-btn" data-view="custos">💰 Custos</button>
     <button class="tab-btn" data-view="equipe">👥 Equipe</button>
   </div>
 
@@ -161,6 +179,10 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
         <div class="dash-label">Faturamento total (R$)</div>
       </div>
       <div class="dash-card wide">
+        <div class="dash-num" id="dashLucro">--</div>
+        <div class="dash-label">Lucro total (R$) · pedidos Entregue/Enviado com custos cadastrados</div>
+      </div>
+      <div class="dash-card wide">
         <div class="sheet-label" style="margin-bottom:10px">Pedidos por status</div>
         <div id="dashStatusBreakdown"></div>
       </div>
@@ -182,6 +204,23 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
     </div>
     <div class="pedido-list" id="pedidoList">
       <div class="empty-state"><div class="ic">⏳</div>Carregando pedidos...</div>
+    </div>
+  </div>
+
+  <!-- CUSTOS -->
+  <div class="view" id="view-custos">
+    <div class="sheet-label">Tabela de custos por item</div>
+    <div style="font-size:12px;color:var(--soft);margin:6px 0 12px;line-height:1.5">
+      Cadastre o custo de cada combinação <strong>Categoria + Detalhe</strong>. O lucro de cada pedido é calculado casando esse texto com os itens do pedido.
+    </div>
+    <button class="custo-detect-btn" id="btnDetectarCombos">🔍 Detectar combinações novas nos pedidos</button>
+    <div id="custosList"><div class="empty-state"><div class="ic">⏳</div>Carregando custos...</div></div>
+    <div class="custo-add-form">
+      <div style="font-size:12px;font-weight:700;color:var(--teal)">+ Adicionar linha manualmente</div>
+      <input type="text" id="novoCustoCategoria" placeholder="Categoria (ex: Bottons)">
+      <input type="text" id="novoCustoDetalhe" placeholder="Detalhe (ex: Normal (Alfinete) · 32)">
+      <input type="number" step="0.01" id="novoCustoValor" placeholder="Custo unitário (R$)">
+      <button id="btnAddCusto">Adicionar</button>
     </div>
   </div>
 
@@ -236,6 +275,16 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
       <div class="total-row"><span>Total</span><span id="detTotal">R$ 0,00</span></div>
     </div>
 
+    <div class="sheet-section">
+      <div class="sheet-label">Custo extra do pedido (frete, embalagem, taxa...)</div>
+      <input type="number" step="0.01" class="custo-extra-input" id="detCustoExtra" placeholder="0,00">
+      <div class="lucro-box">
+        <div class="lucro-row"><span>Custo dos itens</span><span id="detCustoItens">R$ 0,00</span></div>
+        <div class="lucro-row"><span>Custo extra</span><span id="detCustoExtraView">R$ 0,00</span></div>
+        <div class="lucro-row final"><span>Lucro</span><span id="detLucro">R$ 0,00</span></div>
+      </div>
+    </div>
+
     <div class="sheet-section" id="detObsWrap">
       <div class="sheet-label">Observações</div>
       <div id="detObs" style="font-size:13px;color:var(--soft)"></div>
@@ -269,8 +318,11 @@ const db = getFirestore(app);
 
 const PEDIDOS_REF = collection(db, "imaginae", "dados", "pedidos");
 const ADMINS_REF = collection(db, "admins");
+const CUSTOS_REF = collection(db, "custos");
 
 let pedidosCache = [];
+let custosCache = [];
+let custosMap = {};
 let unsubscribePedidos = null;
 let currentUser = null;
 
@@ -323,6 +375,7 @@ onAuthStateChanged(auth, async (user) => {
     document.getElementById('userEmailLabel').textContent = user.email;
     iniciarEscutaPedidos();
     carregarEquipe();
+    carregarCustos();
   }else{
     loginScreen.style.display = 'flex';
     appEl.classList.remove('show');
@@ -370,6 +423,27 @@ function statusLabel(s){
   return map[s] || s || 'Pendente';
 }
 
+// ---------- CUSTOS / LUCRO ----------
+function chaveCusto(categoria, detalhe){
+  return `${categoria||''}||${detalhe||''}`;
+}
+function calcCustoItens(pedido){
+  return (pedido.itens||[]).reduce((s,i)=>{
+    const custoUnit = custosMap[chaveCusto(i.categoria, i.detalhe)];
+    if(custoUnit === undefined) return s;
+    return s + custoUnit * (i.quantidade||1);
+  }, 0);
+}
+function calcLucro(pedido){
+  const custoItens = calcCustoItens(pedido);
+  const custoExtra = parseFloat(pedido.custoExtra) || 0;
+  const valorTotal = parseFloat(pedido.valorTotal) || 0;
+  return valorTotal - custoItens - custoExtra;
+}
+function pedidoTemCustosCompletos(pedido){
+  return (pedido.itens||[]).every(i => custosMap[chaveCusto(i.categoria, i.detalhe)] !== undefined);
+}
+
 // ---------- DASHBOARD ----------
 function renderDashboard(){
   const total = pedidosCache.length;
@@ -382,6 +456,13 @@ function renderDashboard(){
   document.getElementById('dashPendentes').textContent = pendentes;
   document.getElementById('dashHoje').textContent = hoje;
   document.getElementById('dashFaturamento').textContent = fmtMoeda(faturamento).replace('R$ ','');
+
+  const elegiveis = pedidosCache.filter(p=>{
+    const s = p.status||'Pendente';
+    return (s==='Enviado'||s==='Entregue') && pedidoTemCustosCompletos(p);
+  });
+  const lucroTotal = elegiveis.reduce((s,p)=>s + calcLucro(p), 0);
+  document.getElementById('dashLucro').textContent = fmtMoeda(lucroTotal).replace('R$ ','');
 
   const statusOrder = ['Pendente','Em_producao','Enviado','Entregue','Cancelado'];
   const counts = {};
@@ -479,6 +560,9 @@ function abrirDetalhe(id){
   document.getElementById('detItens').innerHTML = itensHtml;
   document.getElementById('detTotal').textContent = fmtMoeda(p.valorTotal);
 
+  document.getElementById('detCustoExtra').value = p.custoExtra != null ? p.custoExtra : '';
+  atualizarLucroDetalhe();
+
   const obsWrap = document.getElementById('detObsWrap');
   if(p.observacoes){
     obsWrap.style.display = 'block';
@@ -507,6 +591,30 @@ document.getElementById('detStatusSelect').addEventListener('change', async (e)=
   }catch(err){
     console.error(err);
     toast('Erro ao atualizar status');
+  }
+});
+
+function atualizarLucroDetalhe(){
+  const p = pedidosCache.find(x=>x.id===pedidoAbertoId);
+  if(!p) return;
+  const custoItens = calcCustoItens(p);
+  const custoExtra = parseFloat(document.getElementById('detCustoExtra').value) || 0;
+  const valorTotal = parseFloat(p.valorTotal) || 0;
+  document.getElementById('detCustoItens').textContent = fmtMoeda(custoItens);
+  document.getElementById('detCustoExtraView').textContent = fmtMoeda(custoExtra);
+  document.getElementById('detLucro').textContent = fmtMoeda(valorTotal - custoItens - custoExtra);
+}
+
+document.getElementById('detCustoExtra').addEventListener('input', atualizarLucroDetalhe);
+document.getElementById('detCustoExtra').addEventListener('change', async (e)=>{
+  if(!pedidoAbertoId) return;
+  const valor = parseFloat(e.target.value) || 0;
+  try{
+    await updateDoc(doc(db, "imaginae", "dados", "pedidos", pedidoAbertoId), { custoExtra: valor });
+    toast('Custo extra salvo ✓');
+  }catch(err){
+    console.error(err);
+    toast('Erro ao salvar custo extra');
   }
 });
 
@@ -551,6 +659,129 @@ async function carregarEquipe(){
       '<div style="font-size:13px;color:var(--soft)">Não foi possível carregar a equipe.</div>';
   }
 }
+
+// ---------- CUSTOS (coleção "custos") ----------
+async function carregarCustos(){
+  try{
+    const snap = await getDocs(CUSTOS_REF);
+    custosCache = snap.docs.map(d=>({ id: d.id, ...d.data() }));
+    custosMap = {};
+    custosCache.forEach(c=>{ custosMap[chaveCusto(c.categoria, c.detalhe)] = parseFloat(c.custo) || 0; });
+    renderCustos();
+    renderDashboard();
+    if(pedidoAbertoId) atualizarLucroDetalhe();
+  }catch(err){
+    console.error('Erro ao carregar custos:', err);
+    document.getElementById('custosList').innerHTML =
+      '<div style="font-size:13px;color:var(--soft)">Não foi possível carregar os custos.</div>';
+  }
+}
+
+function renderCustos(){
+  const listEl = document.getElementById('custosList');
+  if(custosCache.length === 0){
+    listEl.innerHTML = '<div class="empty-state"><div class="ic">💰</div>Nenhum custo cadastrado ainda.<br>Use "Detectar combinações" ou adicione manualmente.</div>';
+    return;
+  }
+  const grupos = {};
+  custosCache.forEach(c=>{
+    const cat = c.categoria || 'Outros';
+    if(!grupos[cat]) grupos[cat] = [];
+    grupos[cat].push(c);
+  });
+
+  listEl.innerHTML = Object.keys(grupos).sort().map(cat=>`
+    <div class="custo-group">
+      <div class="custo-group-title">${cat}</div>
+      ${grupos[cat].map(c=>`
+        <div class="custo-row" data-id="${c.id}">
+          <div class="cr-det">${c.detalhe || '—'}</div>
+          <input type="number" step="0.01" class="cr-valor" value="${c.custo != null ? c.custo : ''}" placeholder="0,00">
+          <button class="cr-del" data-id="${c.id}">✕</button>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+
+  listEl.querySelectorAll('.cr-valor').forEach(inp=>{
+    inp.addEventListener('change', async (e)=>{
+      const id = e.target.closest('.custo-row').dataset.id;
+      const novoValor = parseFloat(e.target.value) || 0;
+      try{
+        await updateDoc(doc(db, "custos", id), { custo: novoValor });
+        toast('Custo atualizado ✓');
+        carregarCustos();
+      }catch(err){
+        console.error(err);
+        toast('Erro ao atualizar custo');
+      }
+    });
+  });
+
+  listEl.querySelectorAll('.cr-del').forEach(btn=>{
+    btn.addEventListener('click', async ()=>{
+      if(!confirm('Remover esta linha de custo?')) return;
+      try{
+        await deleteDoc(doc(db, "custos", btn.dataset.id));
+        toast('Linha removida ✓');
+        carregarCustos();
+      }catch(err){
+        console.error(err);
+        toast('Erro ao remover');
+      }
+    });
+  });
+}
+
+function slugCusto(categoria, detalhe){
+  return `${categoria}__${detalhe}`.replace(/[\/\.\#\$\[\]]/g, '-').trim();
+}
+
+document.getElementById('btnAddCusto').addEventListener('click', async ()=>{
+  const categoria = document.getElementById('novoCustoCategoria').value.trim();
+  const detalhe = document.getElementById('novoCustoDetalhe').value.trim();
+  const valor = parseFloat(document.getElementById('novoCustoValor').value) || 0;
+  if(!categoria || !detalhe){ toast('Preencha categoria e detalhe'); return; }
+  try{
+    await setDoc(doc(db, "custos", slugCusto(categoria, detalhe)), { categoria, detalhe, custo: valor });
+    document.getElementById('novoCustoCategoria').value = '';
+    document.getElementById('novoCustoDetalhe').value = '';
+    document.getElementById('novoCustoValor').value = '';
+    toast('Custo adicionado ✓');
+    carregarCustos();
+  }catch(err){
+    console.error(err);
+    toast('Erro ao adicionar custo');
+  }
+});
+
+document.getElementById('btnDetectarCombos').addEventListener('click', async ()=>{
+  const encontrados = new Map();
+  pedidosCache.forEach(p=>{
+    (p.itens||[]).forEach(i=>{
+      const categoria = i.categoria || 'Outros';
+      const detalhe = i.detalhe || '—';
+      const chave = chaveCusto(categoria, detalhe);
+      if(custosMap[chave] === undefined && !encontrados.has(chave)){
+        encontrados.set(chave, { categoria, detalhe });
+      }
+    });
+  });
+  if(encontrados.size === 0){
+    toast('Nenhuma combinação nova encontrada');
+    return;
+  }
+  try{
+    for(const { categoria, detalhe } of encontrados.values()){
+      await setDoc(doc(db, "custos", slugCusto(categoria, detalhe)), { categoria, detalhe, custo: 0 });
+    }
+    toast(`${encontrados.size} combinação(ões) adicionada(s) — preencha os custos ✓`);
+    carregarCustos();
+  }catch(err){
+    console.error(err);
+    toast('Erro ao detectar combinações');
+  }
+});
 
 document.getElementById('btnAddAdmin').addEventListener('click', async ()=>{
   const uid = document.getElementById('novoAdminUid').value.trim();
