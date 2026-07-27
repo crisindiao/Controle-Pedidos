@@ -213,7 +213,8 @@ body{font-family:'Inter',sans-serif;background:#FAF5F3;color:var(--text);min-hei
     <div style="font-size:12px;color:var(--soft);margin:6px 0 12px;line-height:1.5">
       Cadastre o custo de cada combinação <strong>Categoria + Detalhe</strong>. O lucro de cada pedido é calculado casando esse texto com os itens do pedido.
     </div>
-    <button class="custo-detect-btn" id="btnDetectarCombos">🔍 Detectar combinações novas nos pedidos</button>
+    <button class="custo-detect-btn" id="btnPrecadastrar" style="background:var(--teal-p);border-color:var(--teal-l);color:var(--teal)">📋 Pré-cadastrar itens do catálogo do site (Bottons, Marcadores, Espelhos, Fotos)</button>
+    <button class="custo-detect-btn" id="btnDetectarCombos">🔍 Detectar combinações novas nos pedidos já feitos</button>
     <div id="custosList"><div class="empty-state"><div class="ic">⏳</div>Carregando custos...</div></div>
     <div class="custo-add-form">
       <div style="font-size:12px;font-weight:700;color:var(--teal)">+ Adicionar linha manualmente</div>
@@ -736,6 +737,54 @@ function renderCustos(){
 function slugCusto(categoria, detalhe){
   return `${categoria}__${detalhe}`.replace(/[\/\.\#\$\[\]]/g, '-').trim();
 }
+
+// Catálogo conhecido de itens do site de pedidos (imaginae-papelaria-criativa),
+// espelhando as combinações reais de categoria+detalhe que o site gera.
+function catalogoConhecido(){
+  const itens = [];
+  const BOTTON_TIPOS = ['Normal (Alfinete)','Com Ímã','Holográfico','Holográfico + Ímã'];
+  const BOTTON_TAMS = [32,44,58];
+  BOTTON_TIPOS.forEach(t=> BOTTON_TAMS.forEach(s=>
+    itens.push({ categoria:'Bottons', detalhe:`${t} · ${s}` })
+  ));
+
+  const MARC_TIPOS = ['Normal','Laminado','Holográfico','Laminado + Holográfico'];
+  MARC_TIPOS.forEach(t=> itens.push({ categoria:'Marcadores', detalhe:`${t} · -` }));
+
+  const ESP_TIPOS = ['Normal','Holográfico'];
+  ESP_TIPOS.forEach(t=> itens.push({ categoria:'Espelhos de Bolso', detalhe:`${t} · 6x9cm` }));
+
+  const FOTO_ACAB = ['Normal','Laminado','Holográfico','Laminado + Holográfico'];
+  const FN_QTDS = [5,10,20,30,50];
+  FOTO_ACAB.forEach(a=> FN_QTDS.forEach(q=>
+    itens.push({ categoria:'Fotos Personalizadas', detalhe:`${a} · ${q} un` })
+  ));
+  const POL_FOTOS = [1,5,10,20];
+  FOTO_ACAB.forEach(a=> POL_FOTOS.forEach(f=>
+    itens.push({ categoria:'Fotos Personalizadas', detalhe:`${a} · ${f} fotos` })
+  ));
+
+  return itens;
+}
+
+document.getElementById('btnPrecadastrar').addEventListener('click', async ()=>{
+  const catalogo = catalogoConhecido().filter(it => custosMap[chaveCusto(it.categoria, it.detalhe)] === undefined);
+  if(catalogo.length === 0){
+    toast('Catálogo já está todo cadastrado');
+    return;
+  }
+  if(!confirm(`Isso vai criar ${catalogo.length} linha(s) de custo (valor R$0, você edita depois). Continuar?`)) return;
+  try{
+    for(const it of catalogo){
+      await setDoc(doc(db, "custos", slugCusto(it.categoria, it.detalhe)), { categoria: it.categoria, detalhe: it.detalhe, custo: 0 });
+    }
+    toast(`${catalogo.length} linha(s) pré-cadastrada(s) ✓`);
+    carregarCustos();
+  }catch(err){
+    console.error(err);
+    toast('Erro ao pré-cadastrar catálogo');
+  }
+});
 
 document.getElementById('btnAddCusto').addEventListener('click', async ()=>{
   const categoria = document.getElementById('novoCustoCategoria').value.trim();
